@@ -1,0 +1,108 @@
+syntax on
+"让vimrc配置变更立即生效'
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+set nocompatible
+set hlsearch
+colorscheme desert
+set nocompatible
+set backspace=indent,eol,start
+filetype indent on
+filetype plugin on
+filetype plugin indent on
+set mouse=a
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+let &t_ut=''
+set tabstop=3
+set shiftwidth=3
+set softtabstop=3
+set foldmethod=indent
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+syntax on
+let mapleader = " "
+noremap <LEADER><CR> :nohlsearch<CR>
+noremap U 3k
+noremap E 3j
+noremap = nzz
+noremap - Nzz
+map s <nop>
+map<Leader>s :w<CR>
+map S :w<CR>
+map<CR>q :q!<CR>
+map Q :qa!<CR>
+map <S-Enter> o<Esc>
+map <C-o> O<Esc>
+set number
+set relativenumber
+" 所在行高亮
+set cursorline
+set wrap
+set showcmd
+set wildmenu
+set hlsearch
+set incsearch
+set ignorecase
+set scrolloff=5
+set showmode
+set paste
+"总是显示状态栏'
+set laststatus=2
+"显示光标当前位置'
+set ruler
+set listchars=tab:>-,trail:-
+" idea内置快捷键alt+F1 (使用快捷键 空格+m)
+nnoremap <Leader>m :action SelectIn<CR>
+
+" idea内置快捷键control+E (使用快捷键 空格+e)
+nnoremap <Leader>e :action RecentFiles<CR>
+
+set cursorline
+hi CursorLine term=bold cterm=bold ctermbg=237
+
+"生成get set方法  (使用快捷键 空格+cc)
+nnoremap <Leader>cc :action Generate<CR>
+nnoremap <Leader>bb :action ToggleLineBreakpoint<CR>
+nnoremap <Leader>br :action ViewBreakpoints<CR>
+"DUG启动
+nnoremap <Leader>dg :action ChooseDebugConfiguration<CR>
+"查找用法
+nnoremap <Leader>fu :action FindUsages<CR>
+"激活maven窗口
+"nnoremap <Leader>ve :action ActivateMavenProjectsToolWindow<CR>
+"跳转到Action
+nnoremap <Leader>ga :action GotoAction<CR>
+
+"跳转到实体类
+nnoremap <Leader>gc :action GotoClass<CR>
+
+"跳转到声明
+nnoremap <Leader>gd :action GotoDeclaration<CR>
+
+"跳转到文件
+nnoremap <Leader>gf :action GotoFile<CR>
+
+"跳转到实现类
+nnoremap <Leader>gi :action GotoImplementation<CR>
+
+"跳转到测试类(没有则自动建立)
+nnoremap <Leader>gt :action GotoTest<CR>
+
+"显示当前文件路径
+nnoremap <Leader>fp :action ShowFilePath<CR>
+" (上下翻页)
+nnoremap <Leader>d  <C-d>
+nnoremap <Leader>u  <C-u>
+nnoremap m :action SelectIn
+nnoremap <Leader>q <C-W>c
+nnoremap sv <C-W>v
+nnoremap ss <C-W>s
+nnoremap <CR> a<CR><Esc>k$
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+"inoremap < <><Esc>i
+inoremap { {}<Esc>i
+inoremap ' ''<Esc>i
+inoremap " ""<Esc>i
+" idea中回车后面不要加}因为idea自动补全加上就会多除一个}
+inoremap {{ {<CR><Esc>O
