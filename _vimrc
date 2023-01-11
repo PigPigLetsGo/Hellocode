@@ -487,7 +487,7 @@ inoreabbrev <expr> __
 
 
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-let g:coc_global_extensions = ['coc-lists','coc-actions','coc-java-vimspector','coc-java-debug','coc-snippets','coc-flutter-tools', 'coc-git','coc-java','coc-java-lombok','coc-html','coc-css','coc-vimlsp']
+let g:coc_global_extensions = ['coc-flutter-tools', 'coc-git','coc-java','coc-java-lombok','coc-html','coc-css','coc-vimlsp']
 
 set hidden
 
