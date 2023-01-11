@@ -86,7 +86,32 @@ Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'c
 Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
 Plug 'mattn/emmet-vim'
 Plug 'bujnlc8/vim-translator'
+Plug 'mattn/emmet-vim'
 call plug#end()
+
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+let g:user_emmet_settings = {
+\  'variables': {'lang': 'ja'},
+\  'html': {
+\    'default_attributes': {
+\      'option': {'value': v:null},
+\      'textarea': {'id': v:null, 'name': v:null, 'cols': 10, 'rows': 10},
+\    },
+\    'snippets': {
+\      'html:5': "<!DOCTYPE html>\n"
+\              ."<html lang=\"${lang}\">\n"
+\              ."<head>\n"
+\              ."\t<meta charset=\"${charset}\">\n"
+\              ."\t<title></title>\n"
+\              ."\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+\              ."</head>\n"
+\              ."<body>\n\t${child}|\n</body>\n"
+\              ."</html>",
+\    },
+\  },
+\}
 
 "翻译
 noremap <leader>tc :<C-u>Tc<CR>
@@ -462,7 +487,7 @@ inoreabbrev <expr> __
 
 
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-let g:coc_global_extensions = ['coc-java-vimspector','coc-java-debug','coc-snippets','coc-flutter-tools', 'coc-git','coc-java','coc-java-lombok','coc-html','coc-css','coc-vimlsp']
+let g:coc_global_extensions = ['coc-lists','coc-actions','coc-java-vimspector','coc-java-debug','coc-snippets','coc-flutter-tools', 'coc-git','coc-java','coc-java-lombok','coc-html','coc-css','coc-vimlsp']
 
 set hidden
 
