@@ -8,7 +8,7 @@
     url() 可以指定背景图片
     */
      --bg-color:  #363B40; 
-    /*--bg-color:  url(./image/慧夜对剑.png) ;*/
+    /*--bg-color:  url(./image/x.png) ;*/
     background-size:cover;
 	background-attachment:fixed;
 	width:95%;
