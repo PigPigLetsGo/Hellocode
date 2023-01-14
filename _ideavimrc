@@ -27,8 +27,6 @@ noremap E 3j
 noremap = nzz
 noremap - Nzz
 map s <nop>
-map<Leader>s :w<CR>
-map S :w<CR>
 map<CR>q :q!<CR>
 map Q :qa!<CR>
 map <S-Enter> o<Esc>
@@ -60,16 +58,23 @@ nnoremap <Leader>e :action RecentFiles<CR>
 set cursorline
 hi CursorLine term=bold cterm=bold ctermbg=237
 
+"打开命令管理器
+nnoremap <Leader>tl Vy<CR>:action ActivateTerminalToolWindow<CR>
+
 "生成get set方法  (使用快捷键 空格+cc)
 nnoremap <Leader>cc :action Generate<CR>
 nnoremap <Leader>bb :action ToggleLineBreakpoint<CR>
 nnoremap <Leader>br :action ViewBreakpoints<CR>
+
 "DUG启动
 nnoremap <Leader>dg :action ChooseDebugConfiguration<CR>
+
 "查找用法
 nnoremap <Leader>fu :action FindUsages<CR>
+
 "激活maven窗口
 "nnoremap <Leader>ve :action ActivateMavenProjectsToolWindow<CR>
+
 "跳转到Action
 nnoremap <Leader>ga :action GotoAction<CR>
 
@@ -90,6 +95,41 @@ nnoremap <Leader>gt :action GotoTest<CR>
 
 "显示当前文件路径
 nnoremap <Leader>fp :action ShowFilePath<CR>
+
+"鼠标右键
+nnoremap <Leader>pm :action ShowPopupMenu<CR>
+
+"注释
+nnoremap <Leader><Leader> :action CommentByLineComment<CR>
+
+"改变视图
+nnoremap <Leader>cv :action ChangeView<CR>
+
+"代码检查
+nnoremap <Leader>ic :action InspectCode<CR>
+
+"正常启动工程
+nnoremap <Leader>rc :action ChooseRunConfiguration<CR>
+
+" 选择调试配置
+nnoremap <Leader>cd :action ChooseDebugConfiguration<CR>
+
+" 选择运行配置
+nnoremap <Leader>rC :action ChooseRunConfiguration<CR>
+
+" 重命令元素
+nnoremap <Leader>re :action RenameElement<CR>
+
+" 重命名文件
+nnoremap <Leader>rf :action RenameFile<CR>
+
+" 重运行
+nnoremap <Leader>rr :action Rerun<CR>
+
+" (切换标签)
+nnoremap qu gt
+nnoremap tp gT
+
 " (上下翻页)
 nnoremap <Leader>d  <C-d>
 nnoremap <Leader>u  <C-u>
