@@ -5,7 +5,7 @@
 :root {
     /* 
     背景颜色 
-    url() 可以指定背景图片
+    url() 可以指定背景图片,可指定gif图片
     */
      --bg-color:  #363B40; 
     /*--bg-color:  url(./image/x.png) ;*/
