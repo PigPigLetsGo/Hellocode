@@ -4,6 +4,9 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 set guifont=Courier\ New:h10
 colorscheme habamax
 set nocompatible
+"高亮行和列
+set cuc "列
+set cursorline "行
 set hlsearch
 set nocompatible
 set backspace=indent,eol,start
