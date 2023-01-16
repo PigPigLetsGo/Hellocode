@@ -110,7 +110,7 @@ select,
 textarea,
 div.code-tooltip-content {
     /* 文本文字的颜色，全局的 */
-    color: #0f0; /*#b8bfc6*/
+    color: #000000; /*#b8bfc6*/
     border-color: transparent;
 	text-shadow: 0.1em 0.1em 0.3em; /*0.1em 0.1em 0.5em*/
 }
