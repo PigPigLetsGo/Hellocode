@@ -5,10 +5,10 @@
 :root {
     /* 
     背景颜色 
-    url() 可以指定背景图片,可指定gif图片
+    url() 可以指定背景图片
     */
-     --bg-color:  #363B40; 
-    /*--bg-color:  url(./image/x.png) ;*/
+    /*--bg-color:  #0ff;*/
+    --bg-color:  url(./image/慧夜对剑.png) ;
     background-size:cover;
 	background-attachment:fixed;
 	width:95%;
@@ -36,28 +36,30 @@
 
     /* 侧边栏 - 文件 一栏字体的颜色 */
     /* --control-text-color: #b7b7b7; */
-    --control-text-color: #b7b7b7;
+    --control-text-color: #c76739;
 
     /* 侧边栏 - 文件 列表左边方块图标的颜色 */
     /* --active-file-border-color: #8d8df0; */
-    --active-file-border-color: #8d8df0;
+    --active-file-border-color: #ff0000;
+	
+	--active-file-border:2px dotted #00e6ff;
 
     /* 侧边栏 - 文件 文件名称的颜色 */
     /* --active-file-text-color: white; */
-    --active-file-text-color: #8d8df0;
+    --active-file-text-color: #00e6ff;
 
     /* 侧边栏 - 文件 文件名称背景块的颜色 */
     /* --active-file-bg-color: rgb(34, 34, 34); */
-    --active-file-bg-color: rgb(34, 34, 34);
+    --active-file-bg-color: rgb(150, 50, 30);
 
     /* --iltem-hover-bg-coor: #0a0d16; */
     --iltem-hover-bg-coor: #0a0d16;
 
     /* --control-text-hover-color: #eee; */
-    --control-text-hover-color: #eee;
+    --control-text-hover-color: #7fff00;
 
     /* --window-border: 1px solid #555; */
-    --window-border: 1px solid #555;
+    --window-border: 2px dotted #555;
 
     /* --primary-color: #a3d5fe; */
     --primary-color: #a3d5fe;
@@ -85,16 +87,18 @@ html,
 body {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
-    background: #363B40;
+    background: #363B40; /*#363B40*/
     background: var(--bg-color);
     fill: currentColor;
     line-height: 1.625rem;
     background-size: cover;
 }
 
-/* 正文区域宽度设置 */
+/* 正文区域宽度设置 1800px */
 #write {
     max-width: 1800px;
+	border:#00ffbe 1px solid;
+	border-radius:15px;
 }
 
 html,
@@ -105,17 +109,18 @@ select,
 textarea,
 div.code-tooltip-content {
     /* 文本文字的颜色，全局的 */
-    color: #b8bfc6;
+    color: #0f0; /*#b8bfc6*/
     border-color: transparent;
+	text-shadow: 0.1em 0.1em 0.6em; /*0.1em 0.1em 0.5em*/
 }
 
 div.code-tooltip,
 .md-hover-tip .md-arrow:after {
-    background: #333;
+    background: #333; /*#333*/
 }
 
 .popover.bottom > .arrow:after {
-    border-bottom-color: #333;
+    border-bottom-color: #333; /*#333*/
 }
 
 html,
@@ -129,7 +134,7 @@ textarea {
 
 hr {
     height: 2px;
-    border: 0;
+    border: 1;
     margin: 24px 0 !important;
 }
 
@@ -233,19 +238,19 @@ h6 {
     h4.md-focus:before,
     h5.md-focus:before,
     h6.md-focus:before {
-        color: #ddd;
-        border: 1px solid #ddd;
-        border-radius: 3px;
-        position: absolute;
-        left: -1.642857143rem;
-        top: .357142857rem;
-        float: left;
-        font-size: 9px;
-        padding-left: 2px;
-        padding-right: 2px;
-        vertical-align: bottom;
-        font-weight: normal;
-        line-height: normal;
+        color: #f0f; /*#ddd*/
+        border: 1px dotted #ddd; /*1px solid #ddd*/
+        border-radius: 3px; /*3px*/
+        position: absolute; /*absolute*/
+        left: -1.642857143rem; /*-1.642857143rem*/
+        top: .357142857rem; /*.357142857rem*/
+        float: left; /*left*/
+        font-size: 9px; /*9px*/
+        padding-left: 2px; /*2px*/
+        padding-right: 2px; /*2px*/
+        vertical-align: bottom; /*bottom*/
+        font-weight: normal; /*normal*/
+        line-height: normal; /*normal*/
     }
 
     h3.md-focus:before {
@@ -328,7 +333,7 @@ audio:not([controls]) {
 *.in-text-selection,
 ::selection {
     background: #4a89dc;
-    color: #fff;
+    color: #fff; /*#fff*/
     text-shadow: none;
 }
 
@@ -401,7 +406,7 @@ kbd {
     padding: 2px 4px;
     font-size: 90%;
     color: #fff;
-    background-color: #333;
+    background-color: #333; /*#333*/
     border-radius: 3px;
     box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
 }
@@ -492,7 +497,7 @@ strong {
 mark {
     /* background: #D3D40E; */
 
-    border: .1em solid #b160ea;
+    border: .1em dotted #b160ea;
     color: #b160ea;
     background-color: transparent;
     padding: .1rem .5rem;
@@ -676,6 +681,10 @@ td {
     box-shadow: none;
     border-right: 1px dashed;
     border-right: none;
+	border:#ffc300 2px dotted;
+	border-radius:20px;
+	background-image:  url(./image/cang.gif) ;
+	background-size:cover;
 }
 
 .sidebar-tabs {
@@ -952,7 +961,7 @@ footer {
 .active-tab-files #info-panel-tab-file:hover,
 .active-tab-outline #info-panel-tab-outline,
 .active-tab-outline #info-panel-tab-outline:hover {
-    color: #eee;
+    color: #f1908e;
 }
 
 .sidebar-footer-item:hover,
