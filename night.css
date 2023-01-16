@@ -8,7 +8,7 @@
     url() 可以指定背景图片
     */
     /*--bg-color:  #0ff;*/
-    --bg-color:  url(./image/夜灯.gif) ;
+    --bg-color:  url(./image/星.gif) ;
     background-size:cover;
 	background-attachment:fixed;
 	width:100%;
@@ -37,11 +37,11 @@
 
     /* 侧边栏 - 文件 一栏字体的颜色 */
     /* --control-text-color: #b7b7b7; */
-    --control-text-color: #c76739;
+    --control-text-color: #ffffff;
 
     /* 侧边栏 - 文件 列表左边方块图标的颜色 */
     /* --active-file-border-color: #8d8df0; */
-    --active-file-border-color: #ff0000;
+    --active-file-border-color: #ed7f82;
 	
 	--active-file-border:2px dotted #00e6ff;
 
@@ -110,9 +110,9 @@ select,
 textarea,
 div.code-tooltip-content {
     /* 文本文字的颜色，全局的 */
-    color: #000000; /*#b8bfc6*/
+    color: #00ff80; /*#b8bfc6*/
     border-color: transparent;
-	text-shadow: 0.1em 0.1em 0.3em; /*0.1em 0.1em 0.5em*/
+	text-shadow: 0.1em 0.1em 0.6em; /*0.1em 0.1em 0.5em*/
 }
 
 div.code-tooltip,
@@ -684,7 +684,7 @@ td {
     border-right: none;
 	border:#ffc300 2px dotted;
 	border-radius:20px;
-	background-image:  url(./image/流星.gif) ;
+	background-image:  url(./image/瓶中玫瑰.gif) ;
 	background-size:cover;
 }
 
