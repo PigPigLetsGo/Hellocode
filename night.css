@@ -8,7 +8,7 @@
     url() 可以指定背景图片
     */
     /*--bg-color:  #0ff;*/
-    --bg-color:  url(./image/慧夜对剑.png) ;
+    --bg-color:  url(./image/传送门.png) ;
     background-size:cover;
 	background-attachment:fixed;
 	width:95%;
@@ -17,6 +17,7 @@
 	z-index:-1;
 	position:absolute;
 	opacity:100;
+	border-radius:30px;
     /* --bg-color:  url(./image/485fc3f46777d9f9302ffa194995ad34); */
 
     /* 侧边栏颜色*/
@@ -899,6 +900,7 @@ footer {
 
 #top-titlebar, #top-titlebar * {
     color: var(--item-hover-text-color);
+	border-radius:30px;
 }
 
 .typora-sourceview-on #toggle-sourceview-btn,
