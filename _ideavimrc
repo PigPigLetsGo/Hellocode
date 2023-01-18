@@ -34,7 +34,9 @@ map <C-o> O<Esc>
 set number
 set relativenumber
 " 所在行高亮
-set cursorline
+set cursorline "行
+
+
 set wrap
 set showcmd
 set wildmenu
@@ -59,7 +61,7 @@ set cursorline
 hi CursorLine term=bold cterm=bold ctermbg=237
 
 "打开命令管理器
-nnoremap <Leader>tl Vy<CR>:action ActivateTerminalToolWindow<CR>
+nnoremap <Leader>sh Vy<CR>:action ActivateTerminalToolWindow<CR>
 
 "生成get set方法  (使用快捷键 空格+cc)
 nnoremap <Leader>cc :action Generate<CR>
@@ -97,7 +99,7 @@ nnoremap <Leader>gt :action GotoTest<CR>
 nnoremap <Leader>fp :action ShowFilePath<CR>
 
 "鼠标右键
-nnoremap <Leader>pm :action ShowPopupMenu<CR>
+nnoremap <Leader>fd :action ShowPopupMenu<CR>
 
 "注释
 nnoremap <Leader><Leader> :action CommentByLineComment<CR>
@@ -127,8 +129,8 @@ nnoremap <Leader>rf :action RenameFile<CR>
 nnoremap <Leader>rr :action Rerun<CR>
 
 " (切换标签)
-nnoremap qu gt
-nnoremap tp gT
+nnoremap tp gt
+nnoremap qu gT
 
 " (上下翻页)
 nnoremap <Leader>d  <C-d>
