@@ -74,6 +74,13 @@ nnoremap <Leader>dg :action ChooseDebugConfiguration<CR>
 "查找用法
 nnoremap <Leader>fu :action FindUsages<CR>
 
+
+" 前进，相当似于eclipse中的alt+方向右键
+nnoremap tf :action Forward<CR>
+" 后退，相当于eclipse中的alt+方向左键
+nnoremap tv :action Back<CR>
+
+
 "激活maven窗口
 "nnoremap <Leader>ve :action ActivateMavenProjectsToolWindow<CR>
 
@@ -128,6 +135,18 @@ nnoremap <Leader>rf :action RenameFile<CR>
 " 重运行
 nnoremap <Leader>rr :action Rerun<CR>
 
+"插 入 模 式 下 移 动 光 标 快 捷 键                                                                                                                        
+inoremap <C-h> <Left>                                                                                                                             
+inoremap <C-j> <Down>                                                                                                                              
+inoremap <C-k> <Up>                                                                                                                               
+inoremap <C-l> <Right> 
+
+"上下左右键控制当前分窗大小,ideavim应该不持支
+map <up> :res +5<CR>
+map <down> :res -5<CR>
+map <left> :vertical resize -5<CR>
+map <right> :vertical resize +5<CR>
+   
 " (切换标签)
 nnoremap tp gt
 nnoremap qu gT
