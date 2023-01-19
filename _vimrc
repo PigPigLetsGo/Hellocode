@@ -45,12 +45,6 @@ set laststatus=2
 set ruler
 set listchars=tab:>-,trail:-
 
-"插 入 模 式 下 移 动 光 标 快 捷 键                                                                                                                        
-inoremap <C-h> <Left>                                                                                                                             
-inoremap <C-j> <Down>                                                                                                                              
-inoremap <C-k> <Up>                                                                                                                               
-inoremap <C-l> <Right> 
-
 "上下左右键控制当前分窗大小
 map <up> :res +5<CR>
 map <down> :res -5<CR>
@@ -60,7 +54,6 @@ map <right> :vertical resize +5<CR>
 "禁止生成临时文件
 set nobackup
 set noswapfile
-
 
 "显示当前文件路径
 nnoremap <Leader>fp :action ShowFilePath<CR>
