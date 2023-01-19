@@ -65,7 +65,9 @@ nnoremap <Leader>sh Vy<CR>:action ActivateTerminalToolWindow<CR>
 
 "生成get set方法  (使用快捷键 空格+cc)
 nnoremap <Leader>cc :action Generate<CR>
+"打断点
 nnoremap <Leader>bb :action ToggleLineBreakpoint<CR>
+"查看所有断点
 nnoremap <Leader>br :action ViewBreakpoints<CR>
 
 "DUG启动
@@ -142,10 +144,10 @@ inoremap <C-k> <Up>
 inoremap <C-l> <Right> 
 
 "上下左右键控制当前分窗大小,ideavim应该不持支
-map <up> :res +5<CR>
-map <down> :res -5<CR>
-map <left> :vertical resize -5<CR>
-map <right> :vertical resize +5<CR>
+"map <up> :res +5<CR>
+"map <down> :res -5<CR>
+"map <left> :vertical resize -5<CR>
+"map <right> :vertical resize +5<CR>
    
 " (切换标签)
 nnoremap tp gt
