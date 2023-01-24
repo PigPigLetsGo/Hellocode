@@ -213,10 +213,10 @@ noremap <Space>g, mm`m:action JumpToLastChange<CR>
 noremap <Space>g; mm`m:action JumpToNextChange<CR>
 
 "最近查看文件间相互跳转
-noremap <Space>tpf mm`m:action RecentFiles<CR>
+noremap <Space>e mm`m:action RecentFiles<CR>
 
 "最近改动文件间相互跳转
-noremap <Space>tpg mm`m:action RecentChangedFiles<CR>
+noremap <Space>g mm`m:action RecentChangedFiles<CR>
 
 "项目之间的跳转(上一个)
 noremap <Space>nw :action NextProjectWindow<CR>
