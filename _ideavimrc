@@ -346,6 +346,14 @@ noremap <Space>ee :action EvaluateExpression <CR>
 noremap <Space>fr :action Debugger.ForceEarlyReturn<CR>
 "添加新的debug观察
 noremap <Space>daw :action Debugger.AddToWatch<CR>
+"添加到收藏文件
+noremap <Space>atf :action AddToFavorites<CR>
+"露出文件夹
+noremap <Space>ri :action RevealIn<CR>
+"打开ddl语句
+noremap <Space>dl :action DatabaseView.OpenDdlInConsole<CR>
+"大小写，驼峰，下划线，中划线转换
+noremap <Space>uu :action de.netnexus.CamelCasePlugin.ToggleCamelCase<CR>
 
 "移动重构
 noremap <Space>mv :action Move<CR>
