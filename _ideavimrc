@@ -122,7 +122,7 @@ noremap <Space>ds :action StreamTracerAction<CR>
 noremap <Space>mb :action XDebugger.MuteBreakpoints<CR>
 
 "条件断点编辑
-noremap <Space>eb :action EditBreakpoint<CR
+noremap <Space>eb :action EditBreakpoint<CR>
 
 "DUG启动
 nnoremap <Leader>dg :action ChooseDebugConfiguration<CR>
@@ -426,7 +426,7 @@ noremap <Space>sc :action Console.Transaction.Commit<CR>
 "sql回滚
 noremap <Space>sr :action Console.Transaction.Rollback<CR>
 "sql执行
-noremap <Space>se :action Console.Jdbc.Execute<CR>
+noremap <Space>s :action Console.Jdbc.Execute<CR>
 "sql执行计划
 noremap <Space>ep :action Console.Jdbc.ExplainPlan<CR>
 "sql-raw执行计划
