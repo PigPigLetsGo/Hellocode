@@ -14,10 +14,15 @@ set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
 let &t_ut=''
+let g:EasyMotion_override_acejump = 0
+let g:argtextobj_pairs="[:],(:),<:>"
+set idearefactormode=keep
+set ideavimsupport
 set tabstop=3
 set shiftwidth=3
 set softtabstop=3
 set foldmethod=indent
+set so=5
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 syntax on
 let mapleader = " "
@@ -31,11 +36,31 @@ map<CR>q :q!<CR>
 map Q :qa!<CR>
 map <S-Enter> o<Esc>
 map <C-o> O<Esc>
+map <leader>a :action $SelectAll<CR>
+map <leader>x :action $Cut<CR>
+map <leader>c :action $Copy<CR>
+map <leader>z :action $Undo<CR>
+map <leader>v :action $Paste<CR>
 set number
 set relativenumber
+set ideajoin
+set exchange
+set easymotion
+set surround
+set ideamarks
+set clipboard+=ideaput
+set keep-english-in-normal-and-restore-in-insert
 " 所在行高亮
 set cursorline "行
+" 突出显示当前行
+set scrolloff=3 " 3 lines above/below cursor when scrolling
+" Vim 的默认寄存器和系统剪贴板共享
+set clipboard+=unnamed
 
+
+"输入问题
+set keep-english-in-normal " 开启输入法自动切换功能
+set keep-english-in-normal-and-restore-in-insert " 回到insert模式时恢复输入法
 
 set wrap
 set showcmd
@@ -47,10 +72,13 @@ set scrolloff=5
 set smartcase
 set history=3000000
 set commentary
+set multiple-cursors
 :set vb
 :set keep-english-in-normal
 set showmatch
 set showmode
+set NERDTree
+set highlightedyank
 set paste
 "总是显示状态栏'
 set laststatus=2
@@ -66,6 +94,9 @@ nnoremap <Leader>sh Vy<CR>:action ActivateTerminalToolWindow<CR>
 
 "生成get set方法  (使用快捷键 空格+cc)
 nnoremap <Leader>cc :action Generate<CR>
+
+" 重写方法
+nnoremap cx :action OverrideMethods<CR>
 
 "打断点
 nnoremap <Space>bb :action ToggleLineBreakpoint<CR>
