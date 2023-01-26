@@ -94,11 +94,14 @@ hi CursorLine term=bold cterm=bold ctermbg=237
 "打开命令管理器
 nnoremap <Leader>sh Vy<CR>:action ActivateTerminalToolWindow<CR>
 
-"生成get set方法  (使用快捷键 空格+cc)
-nnoremap <Leader>cc :action Generate<CR>
+"生成get set方法
+nnoremap <Leader>GS :action Generate<CR>
+
+"g4文件生成代码(需要安装anltr4插件)
+noremap <Space>ag :action antlr.Generate<CR>:action antlr.Generate<CR>
 
 " 重写方法
-nnoremap cx :action OverrideMethods<CR>
+nnoremap <Space>cx :action OverrideMethods<CR>
 
 "打断点
 nnoremap <Space>bb :action ToggleLineBreakpoint<CR>
@@ -331,9 +334,6 @@ noremap <Space>st  :action Stop<CR>
 noremap <Space>op :action OpenFile<CR>
 "关闭项目
 noremap <Space>dp :action CloseProject<CR>
-
-"g4文件生成代码(需要安装anltr4插件)
-noremap <Space>ag :action antlr.Generate<CR>:action antlr.Generate<CR>
 
 "整理代码
 noremap <Space>= :action ReformatCode<CR>
