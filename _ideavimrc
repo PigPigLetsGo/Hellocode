@@ -130,29 +130,32 @@ nnoremap <Leader>dg :action ChooseDebugConfiguration<CR>
 "查找用法
 nnoremap <Leader>fu :action FindUsages<CR>
 
+"Codota查找类似代码，需要提前安装Codota插件
+noremap <Space>oc :action OpenCodotaSearch<CR>
+
 "快速翻译(需要安装翻译插件:Translation)
 noremap <Space>qq   :action $TranslateTextComponent<CR>
 
 "复制相对路径文件名
 noremap <Space>ccp   :action CopyContentRootPath<CR>
 
+"复制当前文件的绝对路径
+noremap <Space>cpa   :action CopyAbsolutePath<CR>
+
 "保存模板
 noremap <Space>st :action SaveAsTemplate<CR>
 
-"代码环绕
+"代码环绕(if,try|catch之类的)
 noremap <Space>sw :action SurroundWith<CR>
 
 "新建类,比nE快
 noremap <Space>nc :action NewClass<CR>
 
-"优化导入
-noremap <Space>oi :action OptimizeImports<CR>
-
-"复制当前文件的绝对路径
-noremap <Space>cpa   :action CopyAbsolutePath<CR>
-
 "新建项目
 noremap <Space>np :action NewProject<CR>
+
+"优化导入
+noremap <Space>oi :action OptimizeImports<CR>
 
 "idea智能提示(CR:回车 执行操作为:两次回车)
 nnoremap <CR><CR> :action ShowIntentionActions<CR>
@@ -178,17 +181,14 @@ noremap <Space>sd  :action ShowUmlDiagram<CR>
 "关闭到只剩当前tab栏
 noremap <Space>co :action CloseAllEditorsButActive<CR>
 
+"删除未修改的tab
+noremap <Space>cu :action CloseAllUnmodifiedEditors<CR>
+
 " 前进，相当似于eclipse中的alt+方向右键
 nnoremap tf :action Forward<CR>
 
 " 后退，相当于eclipse中的alt+方向左键
 nnoremap tv :action Back<CR>
-
-"激活debug的运行窗口
-nnoremap <Space>wd :action ActivateDebugToolWindow<CR>
-
-"激活run的运行窗口
-nnoremap <Space>wr :action ActivateRunToolWindow<CR>
 
 "窗口最大化windows max
 nnoremap <Space>mm :action MaximizeToolWindow<CR>
@@ -198,6 +198,15 @@ noremap <Space>ha :action HideAllWindows<CR>
 
 "隐藏窗口(windows hide)
 nnoremap <Space>wh :action HideActiveWindow<CR>
+
+"激活debug的运行窗口
+nnoremap <Space>wd :action ActivateDebugToolWindow<CR>
+
+"激活run的运行窗口
+nnoremap <Space>wr :action ActivateRunToolWindow<CR>
+
+"激活窗口,选中当前位置
+noremap <Space>si :action SelectInProjectView<CR>
 
 "激活maven窗口
 noremap <Space>AM  :action ActivateMavenToolWindow<CR>
@@ -223,12 +232,8 @@ noremap <Space>AS :action ActivateServicesToolWindow<CR>
 "激活Breakpoints的窗口.
 noremap <Space>AB :action ViewBreakpoints<CR>
 
-"跳转 需要安装AceJump插件
-noremap <Space>tj mm`m:action AceWordAction<CR>
-noremap <Space>jp mm`m:action AceDeclarationAction<CR>
-
 "Codota激活窗口，需要提前安装Codota插件
-noremap <Space>cl :action CodotaLeanSearchCrossRefAction<CR>
+noremap <Space>AC :action ActivateCodotaToolWindow<CR>
 
 "激活Rest的窗口(需要安装插件)
 noremap <Space>AR :action ActivateRestServicesToolWindow<CR>
@@ -352,8 +357,10 @@ noremap <Space>atf :action AddToFavorites<CR>
 noremap <Space>ri :action RevealIn<CR>
 "打开ddl语句
 noremap <Space>dl :action DatabaseView.OpenDdlInConsole<CR>
-"大小写，驼峰，下划线，中划线转换
+"大小写，驼峰，下划线，中划线转换(安装插件:CamelCase)
 noremap <Space>uu :action de.netnexus.CamelCasePlugin.ToggleCamelCase<CR>
+"大小写切换，必须要先安装插件(安装插件:CamelCase)
+noremap <Space>u :action de.netnexus.CamelCasePlugin.ToggleCamelCase<CR>
 
 "移动重构
 noremap <Space>mv :action Move<CR>
@@ -389,6 +396,8 @@ noremap <Space>ip :action IntroduceParameter<CR>
 noremap <Space>fi :action IntroduceField<CR>
 "引入参数对象(指定参数)
 noremap <Space>po :action IntroduceParameterObject<CR>
+"CSDN万能工具，需要提前安装CSDN插件
+noremap <Space>csdn :action SearchByCSDN<CR>
 
 "方法下放到子类
 noremap <Space>pd :action MemberPushDown<CR>
@@ -406,6 +415,10 @@ inoremap <C-l> <Right>
 "map <down> :res -5<CR>
 "map <left> :vertical resize -5<CR>
 "map <right> :vertical resize +5<CR>
+
+"跳转 需要安装AceJump插件
+noremap <Space>tj mm`m:action AceWordAction<CR>
+noremap <Space>jp mm`m:action AceDeclarationAction<CR>
 
 " (切换标签)
 nnoremap tp gt
