@@ -25,6 +25,8 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 let mapleader = " "
 noremap U 3k
 noremap E 3j
+noremap = nzz
+noremap - Nzz
 map s <nop>
 map <S-Enter> o<Esc>
 set mouse-=a
