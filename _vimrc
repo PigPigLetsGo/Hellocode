@@ -26,6 +26,15 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 let mapleader = " "
 noremap U 3k
 noremap E 3j
+"中间行
+nnoremap <esc> :noh<cr>zz
+noremap j gjzz
+noremap k gkzz
+noremap <s-n> <s-n>zz
+noremap * *zz
+noremap # #zz
+noremap <c-o> <c-o>zz
+noremap <c-i> <c-i>zz
 map s <nop>
 map <S-Enter> o<Esc>
 set number
