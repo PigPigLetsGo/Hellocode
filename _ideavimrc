@@ -29,8 +29,18 @@ let mapleader = " "
 noremap <LEADER><CR> :nohlsearch<CR>
 noremap U 3k
 noremap E 3j
+"中间行
 noremap = nzz
 noremap - Nzz
+nnoremap <esc> :noh<cr>zz
+noremap j gjzz
+noremap k gkzz
+noremap <s-n> <s-n>zz
+noremap * *zz
+noremap # #zz
+noremap <c-o> <c-o>zz
+noremap <c-i> <c-i>zz
+
 map s <nop>
 map<CR>q :q!<CR>
 map Q :qa!<CR>
