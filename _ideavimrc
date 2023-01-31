@@ -29,18 +29,8 @@ let mapleader = " "
 noremap <LEADER><CR> :nohlsearch<CR>
 noremap U 3k
 noremap E 3j
-"中间行
 noremap = nzz
 noremap - Nzz
-nnoremap <esc> :noh<cr>zz
-noremap j gjzz
-noremap k gkzz
-noremap <s-n> <s-n>zz
-noremap * *zz
-noremap # #zz
-noremap <c-o> <c-o>zz
-noremap <c-i> <c-i>zz
-
 map s <nop>
 map<CR>q :q!<CR>
 map Q :qa!<CR>
@@ -100,6 +90,16 @@ set listchars=tab:>-,trail:-
 
 set cursorline
 hi CursorLine term=bold cterm=bold ctermbg=237
+
+"中间行
+nnoremap <esc> :noh<cr>zz
+noremap j gjzz
+noremap k gkzz
+noremap <s-n> <s-n>zz
+noremap * *zz
+noremap # #zz
+noremap <c-o> <c-o>zz
+noremap <c-i> <c-i>zz
 
 "打开命令管理器
 nnoremap <Leader>sh Vy<CR>:action ActivateTerminalToolWindow<CR>
@@ -442,12 +442,11 @@ nnoremap <Leader>q <C-W>c
 nnoremap sv <C-W>v
 nnoremap ss <C-W>s
 nnoremap <CR> a<CR><Esc>k$
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
+"inoremap ( ()<Esc>i
+"inoremap [ []<Esc>i
 "inoremap < <><Esc>i
-inoremap { {}<Esc>i
-inoremap ' ''<Esc>i
-inoremap " ""<Esc>i
+"inoremap { {}<Esc>i
+"inoremap ' ''<Esc>i
 " idea中回车后面不要加}因为idea自动补全加上就会多除一个}
 inoremap {{ {<CR><Esc>O
 
