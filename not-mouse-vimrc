@@ -155,8 +155,6 @@ let g:clap_provider_quick_open = {
       \ 'description': 'Quick open some dotfiles',
       \ }
 
-NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
-
 au FileType c,cpp,objc,objcpp call rainbow#load()
 let g:rainbow_active = 1
 
@@ -197,9 +195,6 @@ let  g:bullets_pad_right  =  1 " default =  1
 
 let  g:bullets_pad_right  =  0 
 " I. text 
-" II. 正文
-“三、正文
-”四、text 
 " ^ 项目符号和文本之间没有多余的空格
 
 let g:bullets_max_alpha_characters = 2 " default = 2
