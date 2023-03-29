@@ -333,7 +333,7 @@ nnoremap <Leader>fp :action ShowFilePath<CR>
 nnoremap <Leader>fd :action ShowPopupMenu<CR>
 
 "注释
-nnoremap <Leader><Leader> :action CommentByLineComment<CR>
+"nnoremap <Leader><Leader> :action CommentByLineComment<CR>
 
 "改变视图
 nnoremap <Leader>cv :action ChangeView<CR>
