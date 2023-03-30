@@ -82,6 +82,7 @@ inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
 
 call plug#begin()
+Plug 'easymotion/vim-easymotion'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'vim-airline/vim-airline-themes'
@@ -109,6 +110,26 @@ Plug 'mattn/emmet-vim'
 Plug 'bujnlc8/vim-translator'
 Plug 'mattn/emmet-vim'
 call plug#end()
+
+"----------------------------------vim-EasyMontion-----------------------------
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+"---------------------------------------------------------------------------------
 
 let g:user_emmet_mode='a'
 
