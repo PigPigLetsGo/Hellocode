@@ -24,8 +24,8 @@ set softtabstop=3
 set foldmethod=indent
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 let mapleader = " "
-noremap U 3k
-noremap E 3j
+noremap U 3kzz
+noremap E 3jzz
 "中间行
 nnoremap <esc> :noh<cr>zz
 noremap j gjzz
