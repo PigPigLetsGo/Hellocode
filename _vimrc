@@ -1,3 +1,11 @@
+"--Vim移动键位--
+"          ^
+"           |
+"           |
+"< - - h j k l - - >
+"              |
+"              |
+"              v
 syntax enable
 "让vimrc配置变更立即生效'
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
