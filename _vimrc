@@ -21,7 +21,7 @@ set backspace=indent,eol,start
 filetype indent on
 filetype plugin on
 filetype plugin indent on
-set mouse=a
+"set mouse=a
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
