@@ -90,6 +90,7 @@ inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
 
 call plug#begin()
+Plug 'vim-scripts/VimTweak'
 Plug 'easymotion/vim-easymotion'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
@@ -118,6 +119,10 @@ Plug 'mattn/emmet-vim'
 Plug 'bujnlc8/vim-translator'
 Plug 'mattn/emmet-vim'
 call plug#end()
+
+"----------------------------------vim-透明VimTweak-----------------------------
+"Alpha Window
+:call libcallnr("vimtweak64.dll", "SetAlpha", 255)
 
 "----------------------------------vim-EasyMontion-----------------------------
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
