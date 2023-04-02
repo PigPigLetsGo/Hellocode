@@ -1,0 +1,502 @@
+"--Vim移动键位--
+"          ^
+"           |
+"           |
+"< - - h j k l - - >
+"              |
+"              |
+"              v
+syntax enable
+"让vimrc配置变更立即生效'
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+set guifont=Courier\ New:h10
+colorscheme torte
+set nocompatible
+"高亮行和列
+set cuc "列
+set cursorline "行
+set hlsearch
+set nocompatible
+set backspace=indent,eol,start
+filetype indent on
+filetype plugin on
+filetype plugin indent on
+"set mouse=a
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+let &t_ut=''
+set tabstop=3
+set shiftwidth=3
+set softtabstop=3
+set foldmethod=indent
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+let mapleader = " "
+noremap U 3kzz
+noremap E 3jzz
+"中间行
+nnoremap <esc> :noh<cr>zz
+noremap j gjzz
+noremap k gkzz
+noremap <s-n> <s-n>zz
+noremap * *zz
+noremap # #zz
+noremap <c-o> <c-o>zz
+noremap <c-i> <c-i>zz
+map s <nop>
+map <S-Enter> o<Esc>
+set number
+set relativenumber
+set wrap
+set showcmd
+set wildmenu
+set hlsearch
+set incsearch
+set ignorecase
+set scrolloff=5
+set showmode
+set paste
+"总是显示状态栏'
+set laststatus=2
+"显示光标当前位置'
+set ruler
+set listchars=tab:>-,trail:-
+
+"上下左右键控制当前分窗大小
+map <up> :res +5<CR>
+map <down> :res -5<CR>
+map <left> :vertical resize -5<CR>
+map <right> :vertical resize +5<CR>
+
+"禁止生成临时文件
+set nobackup
+set noswapfile
+
+"显示当前文件路径
+nnoremap <Leader>fp :action ShowFilePath<CR>
+" (上下翻页)
+nnoremap <Leader>d  <C-d>
+nnoremap <Leader>u  <C-u>
+nnoremap m :action SelectIn
+nnoremap <Leader>q <C-W>c
+nnoremap sv <C-W>v
+nnoremap ss <C-W>s
+nnoremap <CR> a<CR><Esc>k$
+"inoremap ( ()<Esc>i
+"inoremap [ []<Esc>i
+"inoremap < <><Esc>i
+"inoremap { {}<Esc>i
+inoremap ' ''<Esc>i
+inoremap " ""<Esc>i
+
+call plug#begin()
+Plug 'vim-scripts/VimTweak'
+Plug 'easymotion/vim-easymotion'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree'
+Plug 'connorholyday/vim-snazzy'
+Plug 'ferrine/md-img-paste.vim'
+Plug 'dkarter/bullets.vim'
+Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'mattn/emmet-vim'
+call plug#end()
+
+"=============vim-scripts/VimTweak=============
+:call libcallnr("vimtweak64.dll", "SetAlpha", 200)
+
+"=============easymotion/vim-easymotion=============
+" Gif config
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+let g:EasyMotion_startofline = 0 
+let g:EasyMotion_smartcase = 1
+
+"=============markdown-preview.nvim=============
+" set to 1, nvim will open the preview window after entering the markdown buffer
+" default: 0
+let g:mkdp_auto_start = 0
+
+" set to 1, the nvim will auto close current preview window when change
+" from markdown buffer to another buffer
+" default: 1
+let g:mkdp_auto_close = 1
+
+" set to 1, the vim will refresh markdown when save the buffer or
+" leave from insert mode, default 0 is auto refresh markdown as you edit or
+" move the cursor
+" default: 0
+let g:mkdp_refresh_slow = 0
+
+" set to 1, the MarkdownPreview command can be use for all files,
+" by default it can be use in markdown file
+" default: 0
+let g:mkdp_command_for_global = 0
+
+" set to 1, preview server available to others in your network
+" by default, the server listens on localhost (127.0.0.1)
+" default: 0
+let g:mkdp_open_to_the_world = 0
+
+" use custom IP to open preview page
+" useful when you work in remote vim and preview on local browser
+" more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
+" default empty
+let g:mkdp_open_ip = ''
+
+" specify browser to open preview page
+" for path with space
+" valid: `/path/with\ space/xxx`
+" invalid: `/path/with\\ space/xxx`
+" default: ''
+let g:mkdp_browser = 'Chrome'
+
+" set to 1, echo preview page url in command line when open preview page
+" default is 0
+let g:mkdp_echo_preview_url = 0
+
+" a custom vim function name to open preview page
+" this function will receive url as param
+" default is empty
+let g:mkdp_browserfunc = ''
+
+" options for markdown render
+" mkit: markdown-it options for render
+" katex: katex options for math
+" uml: markdown-it-plantuml options
+" maid: mermaid options
+" disable_sync_scroll: if disable sync scroll, default 0
+" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
+"   middle: mean the cursor position alway show at the middle of the preview page
+"   top: mean the vim top viewport alway show at the top of the preview page
+"   relative: mean the cursor position alway show at the relative positon of the preview page
+" hide_yaml_meta: if hide yaml metadata, default is 1
+" sequence_diagrams: js-sequence-diagrams options
+" content_editable: if enable content editable for preview page, default: v:false
+" disable_filename: if disable filename header for preview page, default: 0
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false,
+    \ 'disable_filename': 0,
+    \ 'toc': {}
+    \ }
+
+" use a custom markdown style must be absolute path
+" like '/Users/username/markdown.css' or expand('~/markdown.css')
+let g:mkdp_markdown_css = ''
+
+" use a custom highlight style must absolute path
+" like '/Users/username/highlight.css' or expand('~/highlight.css')
+let g:mkdp_highlight_css = ''
+
+" use a custom port to start server or empty for random
+let g:mkdp_port = ''
+
+" preview page title
+" ${name} will be replace with the file name
+let g:mkdp_page_title = '「${name}」'
+
+" recognized filetypes
+" these filetypes will have MarkdownPreview... commands
+let g:mkdp_filetypes = ['markdown']
+
+" set default theme (dark or light)
+" By default the theme is define according to the preferences of the system
+let g:mkdp_theme = 'dark'
+
+set spell spelllang=en_us
+
+autocmd Filetype markdown map <leader>w yiWi[<esc>Ea](<esc>pa)
+autocmd Filetype markdown inoremap ,f <Esc>/<++><CR>:nohlsearch<CR>c4l
+autocmd Filetype markdown inoremap ,n ---<Enter><Enter>
+autocmd Filetype markdown inoremap ,b **** <++><Esc>F*hi
+autocmd Filetype markdown inoremap ,s ~~~~ <++><Esc>F~hi
+autocmd Filetype markdown inoremap ,i ** <++><Esc>F*i
+autocmd Filetype markdown inoremap ,d `` <++><Esc>F`i
+autocmd Filetype markdown inoremap ,c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+autocmd Filetype markdown inoremap ,h ====<Space><++><Esc>F=hi
+autocmd Filetype markdown inoremap ,p ![](<++>) <++><Esc>F[a
+autocmd Filetype markdown inoremap ,a [](<++>) <++><Esc>F[a
+autocmd Filetype markdown inoremap ,1 #<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,2 ##<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,5 #####<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,l --------<Enter>
+
+" Compile function
+map <C-r> :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+  exec "w"
+  if &filetype == 'c'
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+  elseif &filetype == 'cpp'
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+  elseif &filetype == 'java'
+    exec "!javac %"
+    exec "!time java %<"
+  elseif &filetype == 'sh'
+    :!time bash %
+  elseif &filetype == 'python'
+    silent! exec "!clear"
+    exec "!time python3 %"
+  elseif &filetype == 'html'
+    exec "!firefox % &"
+  elseif &filetype == 'markdown'
+    exec "MarkdownPreview"
+  elseif &filetype == 'vimwiki'
+    exec "MarkdownPreview"
+  endif
+endfunc
+
+"=============vim-table-mode=============
+function! s:isAtStartOfLine(mapping)
+  let text_before_cursor = getline('.')[0 : col('.')-1]
+  let mapping_pattern = '\V' . escape(a:mapping, '\')
+  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+endfunction
+
+inoreabbrev <expr> <bar><bar>
+          \ <SID>isAtStartOfLine('\|\|') ?
+          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+inoreabbrev <expr> __
+          \ <SID>isAtStartOfLine('__') ?
+          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+
+let b:table_mode_corner='+'
+
+"=============vim-airline=============
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+"=============preservim/nerdtree=============
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+" Start NERDTree and leave the cursor in it.
+autocmd VimEnter * NERDTree
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+" Start NERDTree. If a file is specified, move the cursor to its window.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+" Mirror the NERDTree before showing it. This makes it the same on all tabs.
+nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
+let g:NERDTreeDirArrowExpandable = '\'
+let g:NERDTreeDirArrowCollapsible = 'v'
+
+"=============ferrine/md-img-paste.vim=============
+"插入图片
+autocmd FileType markdown nmap <buffer><silent> <leader>i :call mdip#MarkdownClipboardImage()<CR>
+"let g:mdip_imgdir = '.'
+let g:mdip_imgname = 'image'
+
+"=============dkarter/bullets.vim=============
+" Bullets.vim
+let g:bullets_enabled_file_types = [
+    \ 'markdown',
+    \ 'text',
+    \ 'gitcommit',
+    \ 'scratch'
+    \]
+let g:bullets_enable_in_empty_buffers = 0 " default = 1
+let g:bullets_set_mappings = 0 " default = 1
+let g:bullets_mapping_leader = '<M-b>' " default = ''
+let g:bullets_set_mappings = 0 " disable adding default key mappings, default = 1
+
+" default = []
+" N.B. You can set these mappings as-is without using this g:bullets_custom_mappings option but it
+" will apply in this case for all file types while when using g:bullets_custom_mappings it would
+" take into account file types filter set in g:bullets_enabled_file_types, and also
+" g:bullets_enable_in_empty_buffers option.
+let g:bullets_custom_mappings = [
+  \ ['imap', '<cr>', '<Plug>(bullets-newline)'],
+  \ ['inoremap', '<C-cr>', '<cr>'],
+  \
+  \ ['nmap', 'o', '<Plug>(bullets-newline)'],
+  \
+  \ ['vmap', 'gN', '<Plug>(bullets-renumber)'],
+  \ ['nmap', 'gN', '<Plug>(bullets-renumber)'],
+  \
+  \ ['nmap', '<leader>x', '<Plug>(bullets-toggle-checkbox)'],
+  \
+  \ ['imap', '<C-t>', '<Plug>(bullets-demote)'],
+  \ ['nmap', '>>', '<Plug>(bullets-demote)'],
+  \ ['vmap', '>', '<Plug>(bullets-demote)'],
+  \ ['imap', '<C-d>', '<Plug>(bullets-promote)'],
+  \ ['nmap', '<<', '<Plug>(bullets-promote)'],
+  \ ['vmap', '<', '<Plug>(bullets-promote)'],
+  \ ]
+let g:bullets_delete_last_bullet_if_empty = 0 " default = 1
+let g:bullets_line_spacing = 2 " default = 1
+let g:bullets_pad_right = 1 " default = 1
+" I. text
+" II. text
+" III. text
+" IV.  text
+" V.   text
+"     ^ extra spaces to align the text with the longest bullet
+
+let g:bullets_pad_right = 0
+" I. text
+" II. text
+" III. text
+" IV. text
+"    ^ no extra space between bullet and text
+let g:bullets_auto_indent_after_colon = 1 " default = 1
+" a. text
+" b. text:
+"   i. text
+let g:bullets_max_alpha_characters = 2 " default = 2
+" ...
+" y. text
+" z. text
+" aa. text
+" ab. text
+
+let g:bullets_max_alpha_characters = 1
+" ...
+" y. text
+" z. text
+" text
+let g:bullets_outline_levels = ['ROM', 'ABC', 'num', 'abc', 'rom', 'std-', 'std*', 'std+'] " default
+" Ordered list containing the heirarchical bullet levels, starting from the outer most level.
+" Available bullet level options (cannot use the same marker more than once)
+" ROM/rom = upper/lower case Roman numerals (e.g., I, II, III, IV)
+" ABC/abc = upper/lower case alphabetic characters (e.g., A, B, C)
+" std[-/*/+] = standard bullets using a hyphen (-), asterisk (*), or plus (+) as the marker.
+" chk = checkbox (- [ ])
+
+let g:bullets_outline_levels = ['num', 'abc', 'std-']
+" Example [keys pressed to get this bullet]:
+" 1. first parent
+"   a. child bullet [ <cr><C-t> ]
+"     - unordered bullet [ <cr><C-t> ]
+"   b. second child bullet [ <cr><C-d> ]
+" 2. second parent [ <cr><C-d> ]
+let g:bullets_renumber_on_change = 1 " default = 1
+" Example 1:
+" 1. first existing bullet
+"   a. second existing bullet [ hit <C-t> ]
+" 2. third existing bullet [ this got renumbered 3 -> 2 when bullet 2 got demoted ]
+"
+" Example 2:
+" 1. first existing bullet
+" 2. second existing bullet [ use <cr>/o to add a new bullet below this ]
+" 3. new bullet
+" 4. third existing bullet [ this got renumbered 3 -> 2 when bullet 2 got demoted ]
+
+let g:bullets_renumber_on_change = 0
+" Example:
+" 1. first existing bullet
+"   a. second existing bullet [ hit <C-t> ]
+" 3. third existing bullet [ no renumbering so this bullet remained `3` ]
+"
+" Example 2:
+" 1. first existing bullet
+" 2. second existing bullet [ use <cr>/o to add a new bullet below this ]
+" 3. new bullet
+" 3. third existing bullet [ no renumbering so this bullet remained `3` ]
+let g:bullets_nested_checkboxes = 1 " default = 1
+" Example:
+" - [ ] first bullet
+"   - [ ] child bullet  [ type <leader>x ]
+"     - [ ] sub-child
+"   - [ ] child bullet
+"
+" Result:
+" - [o] first bullet   [ <- indicates partial completion of sub-tasks ]
+"   - [X] child bullet
+"     - [X] sub-child  [ <- children get checked when parents get checked ]
+"   - [ ] child bullet
+let g:bullets_checkbox_markers = ' .oOX'
+" Example:
+" - [o] parent bullet  [ <- `o` indicates 66% - 99% of children are checked ]
+"   - [ ] child bullet
+"   - [.] child bullet [ <- partial completions don't count as complete ]
+"     - [ ] sub-child bullet [ <- 1/4 of children checked so parent is `.` ]
+"     - [ ] sub-child bullet
+"     - [ ] sub-child bullet
+"     - [X] sub-child bullet
+"   - [X] child bullet
+"   - [X] child bullet
+"
+" You can use fancy markers:
+" let g:bullets_checkbox_markers = '✗○◐●✓'
+" - [✗] unchecked
+" - [○] partial
+"   - [✓] checked
+"   - [✗] unchecked
+"   - [✗] unchecked
+"   - [✗] unchecked
+" Example 1:
+let g:bullets_checkbox_partials_toggle = 1 " default = 1
+" - [o] partially checked  [ type <leader>x ]
+"   - [x] sub bullet
+"   - [ ] sub bullet
+"
+" Result:
+" - [x] checked
+"   - [x] sub bullet
+"   - [x] sub bullet
+"
+" Example 2:
+let g:bullets_checkbox_partials_toggle = 0
+" - [o] partially checked  [ type <leader>x ]
+"   - [x] sub bullet
+"   - [ ] sub bullet
+"
+" Result:
+" - [ ] checked
+"   - [ ] sub bullet
+"   - [ ] sub bullet
+
+"=============mattn/emmet-vim=============
+let g:user_emmet_leader_key='<C-Z>'
+let g:user_emmet_settings = {
+\  'variables': {'lang': 'ja'},
+\  'html': {
+\    'default_attributes': {
+\      'option': {'value': v:null},
+\      'textarea': {'id': v:null, 'name': v:null, 'cols': 10, 'rows': 10},
+\    },
+\    'snippets': {
+\      'html:5': "<!DOCTYPE html>\n"
+\              ."<html lang=\"${lang}\">\n"
+\              ."<head>\n"
+\              ."\t<meta charset=\"${charset}\">\n"
+\              ."\t<title></title>\n"
+\              ."\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+\              ."</head>\n"
+\              ."<body>\n\t${child}|\n</body>\n"
+\              ."</html>",
+\    },
+\  },
+\}
