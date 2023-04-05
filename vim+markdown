@@ -106,10 +106,9 @@ call plug#end()
 
 "=============vim-scripts/VimTweak=============
 if executable("vimtweak64.dll")
-autocmd guienter * call libcallnr("vimtweak64.dll","SetAlpha",222) 
+autocmd guienter * call libcallnr("vimtweak64.dll","SetAlpha",200) 
 :call libcallnr("vimtweak64.dll", "SetAlpha", 200)
-endif 
-
+endif
 
 "=============easymotion/vim-easymotion=============
 " Gif config
