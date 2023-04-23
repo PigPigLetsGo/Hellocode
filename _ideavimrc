@@ -384,9 +384,13 @@ noremap <Space>dp :action CloseProject<CR>
 noremap <Space>= :action ReformatCode<CR>
 
 "debug神器
+"过步,一行一行的往下走,不会进入方法,遇到子函数不会进入函数内执行子函数而是将子函数整个执行完毕再停止,也就是把子函数整个作为一步
 nmap <C-j> :action StepOver<CR>
+"断点执行，只有一个断点点击后执行全部代码
 nmap <C-k> :action Resume<CR>
+"单步执行到子函数内时,用stepout就可以执行完子函数余下部分，并返回到上一层函数
 nmap <C-h> :action StepOut<CR>
+"进入任何子函数或者方法
 nmap <C-l> :action ForceStepInto<CR>
 "debug强制运行到光标处
 noremap <Space>fc :action ForceRunToCursor<CR>
