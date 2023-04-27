@@ -365,7 +365,7 @@ h3 {
     border-bottom: 2px solid var(--titlebefore-color);
 }
 h3::before {
-    content: '\e689' !important; /* 风车图标,可以自己DIYEmoj表情 */
+    content: '💀' !important; /* 风车图标 */
     color: var(--titlebefore-color);
     font-family: "iconfont";
 }
@@ -481,13 +481,13 @@ h5 {
     color: var(--focus-color);
 }
 #write h5, #write h6 {
-    /* margin-left: 2em; */
+    margin-left: 2em; 
     font-size: 1rem;
 }
-/* #write h5::before {
+#write h5::before {
     content: 'H5';
     top: 0.18rem;
-} */
+} 
 #write h6::before {
     content: 'H6';
     top: 0.18rem;
@@ -574,7 +574,7 @@ h6 p {
 
 
 blockquote {
-    /* border: 1px solid #d1f3ff; */
+    border: 1px solid #d1f3ff; 
     border-left: 5px solid var(--blockquoteicon-color);
     padding: 10px 15px;
     color: #3f3f3f;
@@ -718,15 +718,14 @@ div[alt="notitle-table"] table tr th, div[alt="notitle-table"] table tr td {
 }
 
 /* 行号左框线 */
-/*
 #write .CodeMirror-gutters {
     border-right: 1px solid rgba(204, 51, 0);
 }
-*/
+
 
 /* 代码块行号颜色 */
 .cm-s-inner .CodeMirror-linenumber {
-    /* width: 2ch !important; */
+    /*width: 2ch !important; */
     color: var(--codeblocknum-color);
 }
 
@@ -748,12 +747,11 @@ div[alt="notitle-table"] table tr th, div[alt="notitle-table"] table tr td {
 }
 
 /* 蓝色行内数学公式 */
-/*
 [md-inline='inline_math'] {
     color: blue;
     font-size: 100%;
 }
-*/
+
 
 /* 修复行间公式在手机端屏幕宽度较小时公式极端缩小的问题，但是打印为pdf时仍要设为100%，否则有滚动条 */
 @media only screen and (max-width: 800px) {
@@ -791,8 +789,6 @@ pre.md-meta-block {
 
 
 /** 脚注（上标） **/
-
-
 #write .md-footnote {
     background-color: var(--footnotebg-color);
     color: var(--footnote-color);
@@ -808,8 +804,6 @@ pre.md-meta-block {
 
 
 /** 文本高亮 **/
-
-
 #write span[md-inline="highlight"] mark {
     background-color: var(--highlightbg-color);
     border-radius: 2px;
@@ -821,9 +815,6 @@ pre.md-meta-block {
 
 
 /** 分割线 **/
-
-
-
 hr {
     height: 1px;
     padding: 0;
@@ -835,7 +826,6 @@ hr {
 }
 
 /* 来自next主题样式 */
-
 hr {
     background-image: repeating-linear-gradient(-45deg, var(--split-color), var(--split-color) 4px, transparent 4px, transparent 8px);
     border: 0;
@@ -869,8 +859,6 @@ hr {
 
 
 /** 任务列表小方框 **/
-
-
 .md-task-list-item>input {
     margin-left: -1.3em;
     margin-top: 0.4rem;
@@ -886,7 +874,7 @@ hr {
     font-size: 0.8rem;
     color: white;
     border-radius: 2px;
-    /*background-color: white;*/
+    background-color: white;
     border: 1px solid var(--taskborder-color);
     margin-top: -0.4rem;
     transition: all 0.2s linear;
@@ -921,8 +909,6 @@ hr {
 
 
 /** 导出html文件，修复流程图在手机端高度太大的问题 **/
-
-
 .md-diagram-panel svg{
     /*max-width: inherit !important;*/
     height: inherit !important;
@@ -930,7 +916,7 @@ hr {
 
 
 
- @media print {
+@media print {
     html {
         font-size: 13px;
     }
@@ -941,14 +927,14 @@ hr {
     pre {
         word-wrap: break-word;
     }
-}
+} 
 
  .md-fences {
     background-color: #f8f8f8;
 } 
 
 #write pre.md-meta-block {
-    /* padding: 1rem; */
+    padding: 1rem; 
     font-size: 85%;
     line-height: 1.45;
     background-color: #f7f7f7;
@@ -1000,8 +986,6 @@ details pre {
 
 
 /** 图片 **/
-
-
 .md-image {
     margin: 15px auto 5px;
    
@@ -1115,8 +1099,6 @@ footer {
 
 
 /* 侧边栏 */
-
-
 #typora-sidebar{
     background-color: var(--sidebarbg-color);
 }
@@ -1185,10 +1167,9 @@ footer {
 
 
 /** 有序、无序列表，来自Butterfly主题 **/
-
-
 #write ul li, #write ol li, #write .ul .li, #write .ol .li {
     list-style-type: none;
+
 }
 #write ul>li:not(.tab):before, #write .ul>.li:not(.tab):before {
     margin-left: -22px;
@@ -1252,8 +1233,6 @@ footer {
 
 
 /** 小标签 **/
-
-
 font {
     display: inline;
     padding: .2em .6em;
