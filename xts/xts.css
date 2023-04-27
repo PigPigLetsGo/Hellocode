@@ -365,7 +365,7 @@ h3 {
     border-bottom: 2px solid var(--titlebefore-color);
 }
 h3::before {
-    content: '\e689' !important; /* 风车图标 */
+    content: '\e689' !important; /* 风车图标,可以自己DIYEmoj表情 */
     color: var(--titlebefore-color);
     font-family: "iconfont";
 }
@@ -823,7 +823,7 @@ pre.md-meta-block {
 /** 分割线 **/
 
 
-/*
+
 hr {
     height: 1px;
     padding: 0;
@@ -833,16 +833,16 @@ hr {
     overflow: hidden;
     box-sizing: content-box;
 }
-*/
+
 /* 来自next主题样式 */
-/*
+
 hr {
     background-image: repeating-linear-gradient(-45deg, var(--split-color), var(--split-color) 4px, transparent 4px, transparent 8px);
     border: 0;
     height: 3px;
     margin: 40px 0
 }
-*/
+
 /* 透明渐变水平线 */
 hr {
  width:90%;
@@ -930,7 +930,7 @@ hr {
 
 
 
-/* @media print {
+ @media print {
     html {
         font-size: 13px;
     }
@@ -941,11 +941,11 @@ hr {
     pre {
         word-wrap: break-word;
     }
-} */
+}
 
-/* .md-fences {
+ .md-fences {
     background-color: #f8f8f8;
-} */
+} 
 
 #write pre.md-meta-block {
     /* padding: 1rem; */
@@ -1461,7 +1461,7 @@ span[alt="shake"] {
 }
 
 
-/* https://www.jq22.com/webqd4214（爱是一道光，绿到你发慌） */
+/* https://www.jq22.com/webqd4214 */
 span[alt="glow"] {
 	font-family:'Audiowide';
 	text-align:center;
