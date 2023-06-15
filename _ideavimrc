@@ -404,7 +404,7 @@ nmap <C-j> :action StepOver<CR>
 "断点执行，只有一个断点点击后执行全部代码
 nmap <C-k> :action Resume<CR>
 "单步执行到子函数内时,用stepout就可以执行完子函数余下部分，并返回到上一层函数
-nmap <C-h> :action StepOut<CR>
+nmap <C-n> :action StepOut<CR>
 "进入任何子函数或者方法
 nmap <C-l> :action ForceStepInto<CR>
 "进入子函数或者方法如果多个分支可进行选择进入
