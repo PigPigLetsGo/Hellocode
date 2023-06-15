@@ -407,6 +407,8 @@ nmap <C-k> :action Resume<CR>
 nmap <C-h> :action StepOut<CR>
 "进入任何子函数或者方法
 nmap <C-l> :action ForceStepInto<CR>
+"进入子函数或者方法如果多个分支可进行选择进入
+nmap <C-m> :action StepInto<CR>
 "debug强制运行到光标处
 noremap <Space>fc :action ForceRunToCursor<CR>
 "debug计算器
