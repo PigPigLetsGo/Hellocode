@@ -131,7 +131,7 @@ noremap # #zz
 noremap <c-o> <c-o>zz
 noremap <c-i> <c-i>zz
 
-"EsayMotion需要idea,install此插件
+"EsayMotion需要idea,install此插件，安装好vim-Easymotion,AceJump后重启Idea就可以使用了
 
 Plug 'easymotion/vim-easymotion'
 
