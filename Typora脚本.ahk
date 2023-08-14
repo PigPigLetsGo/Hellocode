@@ -6,10 +6,10 @@
     !3::addFontColor("yellow")
     !4::addFontColor("green")
     !5::addFontColor("gray")
-    !6::addFontColor1("blink")
-    !7::addFontColor1("solid")
-    !8::addFontColor1("wavy")
-    !9::addBlock("danger")
+    !b::addFontColor1("blink")
+    !s::addFontColor1("solid")
+    !w::addFontColor1("wavy")
+    !d::addBlock("danger")
 }
 addFontColor(color){
     clipboard := "" 
