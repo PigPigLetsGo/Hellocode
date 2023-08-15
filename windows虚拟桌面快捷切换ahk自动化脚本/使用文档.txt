@@ -1,0 +1,1 @@
+user_config.ahk与window_switch.ahk必须同时放在同一个位置下，启动window_switch不必启动user_config.ahk而window_switch里面依赖了user_config.ahk这两个缺一不可
