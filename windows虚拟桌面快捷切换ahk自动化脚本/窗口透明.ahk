@@ -1,10 +1,10 @@
 ﻿;窗口透明化增加或者减弱
-#=:: 
+#1:: 
     WinGet, ow, id, A
     WinTransplus(ow)
     return
 ;窗口透明化增加或者减弱
-#-:: 
+#2:: 
     WinGet, ow, id, A
     WinTransMinus(ow)
     return
