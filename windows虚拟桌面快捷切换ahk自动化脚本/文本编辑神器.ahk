@@ -25,24 +25,24 @@ space & ]::Send ^#{right}
 
 ;  *** space + XX
 #if GetKeyState("space", "P")
-f & i:: Send +{up}
-f & j:: Send +{left}
-f & k:: Send +{down}
+f & k:: Send +{up}
+f & h:: Send +{left}
+f & j:: Send +{down}
 f & l:: Send +{right}
-d & i:: Send ^{up}
-d & j:: Send ^{left}
-d & k:: Send ^{down}
+d & k:: Send ^{up}
+d & h:: Send ^{left}
+d & j:: Send ^{down}
 d & l:: Send ^{right}
-;g & i:: Send ^+{up} 
-g & j:: Send ^+{left}
-;g & k:: Send ^+{down}
+;g & k:: Send ^+{up} 
+g & h:: Send ^+{left}
+;g & j:: Send ^+{down}
 g & l:: Send ^+{right}
 
-i:: Send {up}
-j:: Send {left}
-k:: Send {down}
+k:: Send {up}
+h:: Send {left}
+j:: Send {down}
 l:: Send {right}
-h:: Send {home}
+b:: Send {home}
 n:: Send {end}
 o:: Send {Pgup}
 ,:: Send {Pgdn}
@@ -53,4 +53,3 @@ v:: Send ^v
 z:: Send ^z
 
 return
-
