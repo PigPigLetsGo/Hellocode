@@ -1,11 +1,11 @@
 #IfWinActive ahk_exe Typora.exe
 {
-    !0::addFontColor("black")
-    !1::addFontColor("red")
-    !2::addFontColor("blue") 
-    !3::addFontColor("yellow")
-    !4::addFontColor("green")
-    !5::addFontColor("gray")
+    ^!0::addFontColor("black")
+    ^!1::addFontColor("red")
+    ^!2::addFontColor("blue") 
+    ^!3::addFontColor("yellow")
+    ^!4::addFontColor("green")
+    ^!5::addFontColor("gray")
     !b::addFontColor1("blink")
     !s::addFontColor1("solid")
     !w::addFontColor1("wavy")
