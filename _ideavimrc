@@ -91,6 +91,7 @@ set clipboard+=unnamed
 "输入问题,如果无效则按如下操作
 "1.设置-->时间和语言-->语言-->添加语言=>搜索:English(美国)添加
 "按win+Leader切换即可
+"2.在idea中安装插件 IdeaVimExtension
 set keep-english-in-normal " 开启输入法自动切换功能
 set keep-english-in-normal-and-restore-in-insert " 回到insert模式时恢复输入法
 
