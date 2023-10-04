@@ -24,9 +24,9 @@ addFontColor(color){
     SendInput {TEXT}<font title='%color%'>
     SendInput {ctrl down}v{ctrl up}
     If(clipboard = ""){
-        SendInput {TEXT}</font>
+        SendInput {TEXT}</font>.
     }else{
-        SendInput {TEXT}</ 
+        SendInput {TEXT}</.
     }
 }
 addFontColor1(color){
@@ -36,9 +36,9 @@ addFontColor1(color){
     SendInput {TEXT}<span alt='%color%'>
     SendInput {ctrl down}v{ctrl up}
     If(clipboard = ""){
-        SendInput {TEXT}</span>
+        SendInput {TEXT}</span>.
     }else{
-        SendInput {TEXT}</ 
+        SendInput {TEXT}</.
     }
 }
 addFontColor2(color){
@@ -48,9 +48,9 @@ addFontColor2(color){
     SendInput {TEXT}<font color='%color%'>
     SendInput {ctrl down}v{ctrl up}
     If(clipboard = ""){
-        SendInput {TEXT}</font>
+        SendInput {TEXT}</font>.
     }else{
-        SendInput {TEXT}</ 
+        SendInput {TEXT}</.
     }
 }
 addBlock(color){
