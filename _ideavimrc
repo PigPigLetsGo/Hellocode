@@ -132,7 +132,7 @@ noremap # #zz
 noremap <c-o> <c-o>zz
 noremap <c-i> <c-i>zz
 
-"EsayMotion需要idea,install此插件，安装好vim-Easymotion,AceJump后重启Idea就可以使用了
+"EsayMotion需要idea,install此插件
 
 Plug 'easymotion/vim-easymotion'
 
@@ -312,10 +312,10 @@ noremap <Space>g, mm`m:action JumpToLastChange<CR>
 noremap <Space>g; mm`m:action JumpToNextChange<CR>
 
 "最近查看文件间相互跳转
-noremap <Space>tpf mm`m:action RecentFiles<CR>
+noremap <Space>tp mm`m:action RecentFiles<CR>
 
 "最近改动文件间相互跳转
-noremap <Space>tpg mm`m:action RecentChangedFiles<CR>
+noremap <Space>qu mm`m:action RecentChangedFiles<CR>
 
 "项目之间的跳转(上一个)
 noremap <Space>nw :action NextProjectWindow<CR>
@@ -485,8 +485,8 @@ noremap <Space>tj mm`m:action AceWordAction<CR>
 noremap <Space>jp mm`m:action AceDeclarationAction<CR>
 
 " (切换标签)
-nnoremap tp gt
-nnoremap qu gT
+nnoremap <C-e> gt
+nnoremap <C-q> gT
 
 " (上下翻页)
 nnoremap <Leader>d  <C-d>
