@@ -188,9 +188,6 @@ noremap <Space>mb :action XDebugger.MuteBreakpoints<CR>
 "条件断点编辑
 noremap <Space>eb :action EditBreakpoint<CR>
 
-"DUG启动
-nnoremap <Leader>dg :action ChooseDebugConfiguration<CR>
-
 "查找用法
 nnoremap <Leader>fu :action FindUsages<CR>
 
