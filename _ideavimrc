@@ -167,6 +167,12 @@ nnoremap <Space>cx :action OverrideMethods<CR>
 "打断点
 nnoremap <Space>bb :action ToggleLineBreakpoint<CR>
 
+"标记
+nnoremap bj :action ToggleBookmark<cr>
+
+"git工具
+nnoremap ta :action Annotate<cr>
+
 "查看所有断点
 nnoremap <Leader>br :action ViewBreakpoints<CR>
 
@@ -270,34 +276,34 @@ nnoremap <Space>wr :action ActivateRunToolWindow<CR>
 noremap <Space>si :action SelectInProjectView<CR>
 
 "激活maven窗口
-noremap <Space>AM  :action ActivateMavenToolWindow<CR>
+noremap <Space>am  :action ActivateMavenToolWindow<CR>
 
 "激活database窗口
-noremap <Space>AD  :action ActivateDatabaseToolWindow<CR>
+noremap <Space>ad  :action ActivateDatabaseToolWindow<CR>
 
 "激活todo的窗口
-noremap <Space>AT   :action ActivateTODOToolWindow<CR>
+noremap <Space>at   :action ActivateTODOToolWindow<CR>
 
 "激活Favorites的窗口
-noremap <Space>AF :action ActivateFavoritesToolWindow<CR>
+noremap <Space>af :action ActivateFavoritesToolWindow<CR>
 
 "激活project的窗口
-noremap <Space>AP :action ActivateProjectToolWindow<CR>
+noremap <C-a> :action ActivateProjectToolWindow<CR>
 
-"激活git的窗口
-noremap <Space>AG :action ActivateVersionControlToolWindow<CR>
+"激活version control的窗口
+noremap <Space>ag :action ActivateVersionControlToolWindow<CR>
 
-"激活git的窗口
-noremap <Space>AS :action ActivateServicesToolWindow<CR>
+"激活services的窗口
+noremap <Space>as :action ActivateServicesToolWindow<CR>
 
 "激活Breakpoints的窗口.
-noremap <Space>AB :action ViewBreakpoints<CR>
+noremap <Space>ab :action ViewBreakpoints<CR>
 
 "Codota激活窗口，需要提前安装Codota插件
-noremap <Space>AC :action ActivateCodotaToolWindow<CR>
+noremap <Space>ac :action ActivateCodotaToolWindow<CR>
 
 "激活Rest的窗口(需要安装插件)
-noremap <Space>AR :action ActivateRestServicesToolWindow<CR>
+noremap <Space>ar :action ActivateRestServicesToolWindow<CR>
 
 "跳转下个报错处
 noremap <Space>ne mm`m:action GotoNextError<CR>
@@ -352,6 +358,9 @@ nnoremap <Leader>fp :action ShowFilePath<CR>
 
 "鼠标右键
 nnoremap <Leader>fd :action ShowPopupMenu<CR>
+
+"显示字节码
+noremap <Space>bc   :action ByteCodeViewer<CR>
 
 "注释
 nnoremap zz :action CommentByLineComment<CR>
