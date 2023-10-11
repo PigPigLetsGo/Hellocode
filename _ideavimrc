@@ -168,10 +168,10 @@ nnoremap <Space>cx :action OverrideMethods<CR>
 nnoremap <Space>bb :action ToggleLineBreakpoint<CR>
 
 "标记
-nnoremap bj :action ToggleBookmark<cr>
+nnoremap <C-b> :action ToggleBookmark<cr>
 
 "git工具
-nnoremap ta :action Annotate<cr>
+nnoremap <C-t> :action Annotate<cr>
 
 "查看所有断点
 nnoremap <Leader>br :action ViewBreakpoints<CR>
