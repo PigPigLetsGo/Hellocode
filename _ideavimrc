@@ -159,7 +159,7 @@ nnoremap <Leader>sh Vy<CR>:action ActivateTerminalToolWindow<CR>
 nnoremap <Leader>GS :action Generate<CR>
 
 "g4文件生成代码(需要安装anltr4插件)
-noremap <Space>ag :action antlr.Generate<CR>:action antlr.Generate<CR>
+noremap <Space>ags :action antlr.Generate<CR>:action antlr.Generate<CR>
 
 " 重写方法
 nnoremap <Space>cx :action OverrideMethods<CR>
