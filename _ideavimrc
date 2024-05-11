@@ -249,10 +249,10 @@ noremap <Space>co :action CloseAllEditorsButActive<CR>
 noremap <Space>cu :action CloseAllUnmodifiedEditors<CR>
 
 " 前进，相当似于eclipse中的alt+方向右键
-noremap <C-j> :action Forward<CR>
+noremap <Space>j :action Forward<CR>
 
 " 后退，相当于eclipse中的alt+方向左键
-noremap <C-k> :action Back<CR>
+noremap <Space>k :action Back<CR>
 
 "窗口最大化windows max
 nnoremap <Space>mm :action MaximizeToolWindow<CR>
