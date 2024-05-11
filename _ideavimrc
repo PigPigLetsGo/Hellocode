@@ -173,9 +173,6 @@ nnoremap <C-b> :action ToggleBookmark<cr>
 "git工具
 nnoremap <C-t> :action Annotate<cr>
 
-"查看所有断点
-nnoremap <Leader>br :action ViewBreakpoints<CR>
-
 "去除所有断点在当前文件中
 noremap <Space>rb :action Debugger.RemoveAllBreakpointsInFile<CR>
 
