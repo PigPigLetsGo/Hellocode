@@ -402,6 +402,14 @@ noremap <Space>dp :action CloseProject<CR>
 "整理代码
 noremap <Space>= :action ReformatCode<CR>
 
+"--在普通和插入模式下，向下交换行/向上交换行
+nnoremap <C-j> :m +1<CR>
+nnoremap <C-k> :m -2<CR>
+inoremap <C-j> <Esc> :m +1<CR>gi
+inoremap <C-k> <Esc> :m -2<CR>gi
+xnoremap <C-j> :m '>+1<cr>gv=gv
+xnoremap <C-k> :m '<-2<cr>gv=gv
+
 "debug神器
 "过步,一行一行的往下走,不会进入方法,遇到子函数不会进入函数内执行子函数而是将子函数整个执行完毕再停止,也就是把子函数整个作为一步
 nmap <C-j> :action StepOver<CR>
