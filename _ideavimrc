@@ -258,7 +258,7 @@ noremap <Space>k :action Back<CR>
 nnoremap <Space>mm :action MaximizeToolWindow<CR>
 
 "隐藏所有窗口
-noremap <Space>ha :action HideAllWindows<CR>
+noremap <C-c> :action HideAllWindows<CR>
 
 "隐藏窗口(windows hide)
 nnoremap <Space>wh :action HideActiveWindow<CR>
@@ -270,7 +270,7 @@ nnoremap <Space>wd :action ActivateDebugToolWindow<CR>
 nnoremap <Space>wr :action ActivateRunToolWindow<CR>
 
 "激活窗口,选中当前位置
-noremap <Space>si :action SelectInProjectView<CR>
+noremap <C-s> :action SelectInProjectView<CR>
 
 "激活maven窗口
 noremap <Space>am  :action ActivateMavenToolWindow<CR>
@@ -315,7 +315,7 @@ noremap <Space>g, mm`m:action JumpToLastChange<CR>
 noremap <Space>g; mm`m:action JumpToNextChange<CR>
 
 "最近查看文件间相互跳转
-noremap <Space>tp mm`m:action RecentFiles<CR>
+noremap <C-w> :action RecentFiles<CR>
 
 "最近改动文件间相互跳转
 noremap <Space>qu mm`m:action RecentChangedFiles<CR>
@@ -375,7 +375,7 @@ nnoremap <Leader>rc :action ChooseRunConfiguration<CR>
 nnoremap <Leader>cd :action ChooseDebugConfiguration<CR>
 
 "运行当前(now)类
-noremap <Space>rn :action RunClass<CR>
+noremap <C-r> :action RunClass<CR>
 
 " 重命令元素
 nnoremap <Leader>re :action RenameElement<CR>
