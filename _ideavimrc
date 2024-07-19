@@ -243,7 +243,7 @@ noremap <Space>fs mm`m:action FileStructurePopup<CR>
 noremap <Space>sd  :action ShowUmlDiagram<CR>
 
 "关闭到只剩当前tab栏
-noremap <Space>co :action CloseAllEditorsButActive<CR>
+noremap <C-g> :action CloseAllEditorsButActive<CR>
 
 "删除未修改的tab
 noremap <Space>cu :action CloseAllUnmodifiedEditors<CR>
