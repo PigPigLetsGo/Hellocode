@@ -375,7 +375,7 @@ nnoremap <Leader>rc :action ChooseRunConfiguration<CR>
 nnoremap <Leader>cd :action ChooseDebugConfiguration<CR>
 
 "运行当前(now)类
-noremap <C-r> :action RunClass<CR>
+noremap <C-n> :action RunClass<CR>
 
 " 重命令元素
 nnoremap <Leader>re :action RenameElement<CR>
