@@ -375,7 +375,7 @@ nnoremap <Leader>rc :action ChooseRunConfiguration<CR>
 nnoremap <Leader>cd :action ChooseDebugConfiguration<CR>
 
 "运行当前(now)类
-noremap <C-n> :action RunClass<CR>
+noremap <Leader>rn :action RunClass<CR>
 
 " 重命令元素
 nnoremap <Leader>re :action RenameElement<CR>
@@ -438,7 +438,7 @@ noremap <Space>dl :action DatabaseView.OpenDdlInConsole<CR>
 "大小写，驼峰，下划线，中划线转换(安装插件:CamelCase)
 noremap <Space>uu :action de.netnexus.CamelCasePlugin.ToggleCamelCase<CR>
 "大小写切换，必须要先安装插件(安装插件:CamelCase)
-noremap <Space>u :action de.netnexus.CamelCasePlugin.ToggleCamelCase<CR>
+noremap <Space>ur :action de.netnexus.CamelCasePlugin.ToggleCamelCase<CR>
 
 "移动重构
 noremap <Space>mv :action Move<CR>
