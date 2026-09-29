@@ -1,0 +1,1120 @@
+" ============================================================
+" Vim Markdown Notes
+" Windows / Linux 通用
+"
+" 目标：
+"   - Markdown 笔记
+"   - 简洁、高效、可维护、可扩展
+"   - 保留原有个人键位习惯
+"
+" ============================================================
+
+
+" ============================================================
+" 01. 基础设置
+" ============================================================
+
+set nocompatible
+
+" ----------------------------
+" 编码
+" ----------------------------
+
+set encoding=utf-8
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+
+
+" ----------------------------
+" Tab / 缩进
+" ----------------------------
+
+set tabstop=3
+set shiftwidth=3
+set softtabstop=3
+
+
+" ----------------------------
+" 文件类型
+" ----------------------------
+
+filetype indent on
+filetype plugin on
+filetype plugin indent on
+
+syntax enable
+
+
+" ----------------------------
+" 折叠
+" ----------------------------
+
+set foldmethod=indent
+set foldlevel=99
+
+
+" ----------------------------
+" 文件
+" ----------------------------
+
+set nobackup
+set noswapfile
+
+set backspace=indent,eol,start
+
+
+" ============================================================
+" 02. 界面
+" ============================================================
+
+" 真彩色
+if has('termguicolors')
+    set termguicolors
+endif
+
+" 深色背景
+set background=dark
+
+
+" ----------------------------
+" 行号
+" ----------------------------
+
+set number
+set relativenumber
+
+
+" ----------------------------
+" 当前行
+" ----------------------------
+
+set cursorline
+
+
+" ----------------------------
+" 自动换行
+" ----------------------------
+
+set wrap
+set linebreak
+
+
+" ----------------------------
+" 命令 / 模式 / 状态栏
+" ----------------------------
+
+set showcmd
+set showmode
+set laststatus=2
+set ruler
+set wildmenu
+
+
+" ----------------------------
+" 光标上下至少保留 5 行
+" ----------------------------
+
+set scrolloff=5
+
+
+" ----------------------------
+" 搜索
+" ----------------------------
+
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+
+" ----------------------------
+" 不可见字符
+" ----------------------------
+
+set listchars=tab:>-,trail:-
+
+" 如果以后想显示不可见字符：
+" set list
+
+
+" ============================================================
+" 03. Leader
+" ============================================================
+
+let mapleader = " "
+
+
+" ============================================================
+" 04. 我的 Vim 移动键位
+"
+" 保留原有个人习惯，不修改
+" ============================================================
+
+" U / E：快速上下移动并居中
+noremap U 3kzz
+noremap E 3jzz
+
+
+" j / k：按照视觉行移动，并保持居中
+noremap j gjzz
+noremap k gkzz
+
+
+" 搜索后保持当前内容居中
+noremap * *zz
+noremap # #zz
+
+
+" 跳转历史位置后保持居中
+noremap <C-o> <C-o>zz
+noremap <C-i> <C-i>zz
+
+
+" N：搜索下一个结果后居中
+noremap <S-n> <S-n>zz
+
+
+" Esc：取消搜索高亮并居中
+nnoremap <Esc> :nohlsearch<CR>zz
+
+
+" 禁用 s
+map s <Nop>
+
+
+" Shift + Enter：在下一行开始插入
+map <S-Enter> o<Esc>
+
+
+" ============================================================
+" 05. 窗口大小
+"
+" 上下左右方向键控制当前分窗大小
+" ============================================================
+
+nnoremap <Up> :resize +5<CR>
+nnoremap <Down> :resize -5<CR>
+nnoremap <Left> :vertical resize -5<CR>
+nnoremap <Right> :vertical resize +5<CR>
+
+
+" ============================================================
+" 06. 窗口 / Buffer 操作
+" ============================================================
+
+" 上下翻页
+nnoremap <Leader>d <C-d>
+nnoremap <Leader>u <C-u>
+
+
+" 关闭当前窗口
+nnoremap <Leader>q <C-W>c
+
+
+" 垂直分屏
+nnoremap sv <C-W>v
+
+
+" 水平分屏
+nnoremap ss <C-W>s
+
+
+" 回车：
+" 在当前行后插入新行
+nnoremap <CR> a<CR><Esc>k$
+
+
+" ============================================================
+" 07. 文件路径
+" ============================================================
+
+" 显示当前文件完整路径
+nnoremap <Leader>fp :echo expand('%:p')<CR>
+
+
+" ============================================================
+" 08. 插入模式
+" ============================================================
+
+" 自动补双引号 / 单引号
+inoremap ' ''<Esc>i
+inoremap " ""<Esc>i
+
+
+" 如果以后需要括号自动补全，可以打开：
+"
+" inoremap ( ()<Esc>i
+" inoremap [ []<Esc>i
+" inoremap { {}<Esc>i
+
+
+" ============================================================
+" 09. Vimrc 自动重载
+" ============================================================
+
+augroup my_vimrc
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END
+
+
+" ============================================================
+" 10. 恢复上次编辑位置
+" ============================================================
+
+augroup restore_cursor
+    autocmd!
+    autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$")
+        \ | execute "normal! g`\""
+        \ | endif
+augroup END
+
+
+" ============================================================
+" 11. vim-plug
+" ============================================================
+
+call plug#begin()
+
+
+" ============================================================
+" Markdown 插件
+" ============================================================
+
+Plug 'iamcco/markdown-preview.nvim', {
+    \ 'do': { -> mkdp#util#install() },
+    \ 'for': ['markdown', 'vim-plug']
+    \ }
+
+
+" Table Mode
+Plug 'dhruvasagar/vim-table-mode'
+
+
+" Markdown 图片粘贴
+Plug 'ferrine/md-img-paste.vim'
+
+
+" Markdown 列表
+Plug 'dkarter/bullets.vim'
+
+
+" ============================================================
+" 通用 Vim 工具
+" ============================================================
+
+Plug 'easymotion/vim-easymotion'
+
+Plug 'preservim/nerdtree'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+
+" ============================================================
+" 配色
+" ============================================================
+
+Plug 'morhetz/gruvbox'
+
+Plug 'ryanoasis/vim-devicons'
+
+
+call plug#end()
+
+
+" ============================================================
+" 12. 配色
+" ============================================================
+
+colorscheme gruvbox
+set background=dark
+
+
+" ============================================================
+" 13. EasyMotion
+" ============================================================
+
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+let g:EasyMotion_startofline = 0
+let g:EasyMotion_smartcase = 1
+
+
+" ============================================================
+" 14. NERDTree
+" ============================================================
+" ===== NERDTree 文件图标 =====
+let g:webdevicons_enable_nerdtree = 1
+nnoremap <Leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+
+" NERDTree 宽度
+let g:NERDTreeWinSize = 30
+
+
+" 简洁界面
+let g:NERDTreeMinimalUI = 1
+
+
+" 文件夹箭头
+let g:NERDTreeDirArrowExpandable = '>'
+let g:NERDTreeDirArrowCollapsible = 'v'
+
+
+" 隐藏 Windows 系统文件
+let g:NERDTreeIgnore = [
+    \ '^NTUSER\.DAT$',
+    \ '^ntuser\.dat\.LOG[0-9]*$',
+    \ '^ntuser\.ini$'
+    \ ]
+
+
+" ============================================================
+" 18. Markdown Table Mode
+" ============================================================
+
+" 创建 Markdown 表格
+function! CreateMarkdownTable() abort
+
+    let input = input('表格大小（行,列）: ')
+
+    if input !~# '^\s*\d\+\s*[,，]\s*\d\+\s*$'
+        echohl ErrorMsg
+        echo '格式错误，请输入例如：3,3'
+        echohl None
+        return
+    endif
+
+    let parts = split(input, '[,，]')
+    let rows = str2nr(parts[0])
+    let cols = str2nr(parts[1])
+
+    if rows < 1 || cols < 1
+        echohl ErrorMsg
+        echo '行数和列数必须大于 0'
+        echohl None
+        return
+    endif
+
+    let table = []
+
+
+    " 第一行：表头
+    let header = '|'
+
+    for i in range(cols)
+        let header .= ' <++> |'
+    endfor
+
+    call add(table, header)
+
+
+    " Markdown 分隔线
+    let separator = '|'
+
+    for i in range(cols)
+        let separator .= ' --- |'
+    endfor
+
+    call add(table, separator)
+
+
+    " 剩余行
+    for i in range(rows - 1)
+
+        let line = '|'
+
+        for j in range(cols)
+            let line .= ' <++> |'
+        endfor
+
+        call add(table, line)
+
+    endfor
+
+
+    call append(line('.') - 1, table)
+
+    " 光标移动到第一个 <++>
+    normal! j
+
+endfunction
+
+
+" Space + tn：创建 Markdown 表格
+nnoremap <Leader>tn :call CreateMarkdownTable()<CR>
+
+
+" Space + tm：开关 Table Mode
+nnoremap <Leader>tm :TableModeToggle<CR>
+
+
+" ============================================================
+" 15. Markdown Preview
+" ============================================================
+
+nnoremap <Leader>mp :MarkdownPreview<CR>
+nnoremap <Leader>mc :MarkdownPreviewStop<CR>
+nnoremap <Leader>mt :MarkdownPreviewToggle<CR>
+
+
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_command_for_global = 0
+let g:mkdp_open_to_the_world = 0
+let g:mkdp_open_ip = ''
+
+
+" 使用系统默认浏览器
+" Windows / Linux 通用
+let g:mkdp_browser = ''
+
+
+let g:mkdp_echo_preview_url = 0
+let g:mkdp_browserfunc = ''
+
+
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false,
+    \ 'disable_filename': 0,
+    \ 'toc': {}
+    \ }
+
+
+let g:mkdp_markdown_css = ''
+let g:mkdp_highlight_css = ''
+let g:mkdp_port = ''
+
+
+let g:mkdp_page_title = '「${name}」'
+
+
+let g:mkdp_filetypes = ['markdown']
+
+
+let g:mkdp_theme = 'dark'
+
+
+" ============================================================
+" 16. Markdown 专用设置
+" ============================================================
+
+augroup markdown_settings
+
+    autocmd!
+
+    " 英文拼写检查
+    autocmd FileType markdown
+        \ setlocal spell spelllang=en_us
+
+augroup END
+
+
+" ============================================================
+" 17. Markdown 快捷键
+"
+" 只在 Markdown 文件中生效
+" ============================================================
+
+augroup markdown_mappings
+
+    autocmd!
+
+
+    " --------------------------------------------------------
+    " 当前单词转换成 Markdown 链接
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ nnoremap <buffer> <Leader>w
+        \ yiWi[<Esc>Ea](<Esc>pa
+
+
+    " --------------------------------------------------------
+    " 快速跳转到 <++>
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,f
+        \ <Esc>/<++><CR>:nohlsearch<CR>c4l
+
+
+    " --------------------------------------------------------
+    " 分割线
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,n ---<Enter><Enter>
+
+
+    " --------------------------------------------------------
+    " 粗体
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,b **** <++><Esc>F*hi
+
+
+    " --------------------------------------------------------
+    " 删除线
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,s ~~~~ <++><Esc>F~hi
+
+
+    " --------------------------------------------------------
+    " 斜体
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,i ** <++><Esc>F*i
+
+
+    " --------------------------------------------------------
+    " 行内代码
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,d `` <++><Esc>F`i
+
+
+    " --------------------------------------------------------
+    " 代码块
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,c
+        \ ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+
+
+    " --------------------------------------------------------
+    " 一级 / 二级标题样式
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,h ====<Space><++><Esc>F=hi
+
+
+    " --------------------------------------------------------
+    " 图片
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,p ![](<++>) <++><Esc>F[a
+
+
+    " --------------------------------------------------------
+    " 链接
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,a [](<++>) <++><Esc>F[a
+
+
+    " --------------------------------------------------------
+    " 一级标题
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,1 #<Space><Enter><++><Esc>kA
+
+
+    " --------------------------------------------------------
+    " 二级标题
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,2 ##<Space><Enter><++><Esc>kA
+
+
+    " --------------------------------------------------------
+    " 三级标题
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,3 ###<Space><Enter><++><Esc>kA
+
+
+    " --------------------------------------------------------
+    " 四级标题
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,4 ####<Space><Enter><++><Esc>kA
+
+
+    " --------------------------------------------------------
+    " 五级标题
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,5 #####<Space><Enter><++><Esc>kA
+
+
+    " --------------------------------------------------------
+    " 长分割线
+    " --------------------------------------------------------
+
+    autocmd FileType markdown
+        \ inoremap <buffer> ,l --------<Enter>
+
+augroup END
+
+
+" ============================================================
+" 19. Airline
+" ============================================================
+
+let g:airline_powerline_fonts = 0
+let g:airline_theme = 'dark'
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+
+" ============================================================
+" 20. Markdown Bullets
+" ============================================================
+
+let g:bullets_enabled_file_types = [
+    \ 'markdown',
+    \ 'text',
+    \ 'gitcommit',
+    \ 'scratch'
+    \ ]
+
+
+let g:bullets_enable_in_empty_buffers = 0
+
+
+" 不使用 bullets.vim 默认快捷键
+let g:bullets_set_mappings = 0
+
+
+" ------------------------------------------------------------
+" Bullets.vim 快捷键
+"
+" 手动定义，避免 g:bullets_custom_mappings 的兼容问题
+" 只在 Markdown / text 等 Bullets 支持的文件类型中生效
+" ------------------------------------------------------------
+
+augroup bullets_mappings
+
+    autocmd!
+
+
+    " Enter：创建新的 bullet
+    autocmd FileType markdown
+        \ imap <buffer> <silent> <CR>
+        \ <Plug>(bullets-newline)
+
+
+    " Ctrl + Enter：普通换行
+    autocmd FileType markdown
+        \ inoremap <buffer> <C-CR>
+        \ <CR>
+
+
+    " o：创建新的 bullet
+    autocmd FileType markdown
+        \ nmap <buffer> <silent> o
+        \ <Plug>(bullets-newline)
+
+
+    " gN：重新编号
+    autocmd FileType markdown
+        \ vmap <buffer> <silent> gN
+        \ <Plug>(bullets-renumber)
+
+    autocmd FileType markdown
+        \ nmap <buffer> <silent> gN
+        \ <Plug>(bullets-renumber)
+
+
+    " Space + x：切换 Checkbox
+    autocmd FileType markdown
+        \ nmap <buffer> <silent> <Leader>x
+        \ <Plug>(bullets-toggle-checkbox)
+
+
+    " Ctrl + T：降低层级
+    autocmd FileType markdown
+        \ imap <buffer> <silent> <C-t>
+        \ <Plug>(bullets-demote)
+
+
+    " >>：降低层级
+    autocmd FileType markdown
+        \ nmap <buffer> <silent> >>
+        \ <Plug>(bullets-demote)
+
+
+    " >：降低层级
+    autocmd FileType markdown
+        \ vmap <buffer> <silent> >
+        \ <Plug>(bullets-demote)
+
+
+    " Ctrl + D：提升层级
+    autocmd FileType markdown
+        \ imap <buffer> <silent> <C-d>
+        \ <Plug>(bullets-promote)
+
+
+    " <<：提升层级
+    autocmd FileType markdown
+        \ nmap <buffer> <silent> <<
+        \ <Plug>(bullets-promote)
+
+
+    " <：提升层级
+    autocmd FileType markdown
+        \ vmap <buffer> <silent> <
+        \ <Plug>(bullets-promote)
+
+augroup END
+
+
+let g:bullets_delete_last_bullet_if_empty = 0
+
+let g:bullets_line_spacing = 2
+
+let g:bullets_pad_right = 0
+
+let g:bullets_auto_indent_after_colon = 1
+
+let g:bullets_max_alpha_characters = 1
+
+
+let g:bullets_outline_levels = [
+    \ 'num',
+    \ 'abc',
+    \ 'std-'
+    \ ]
+
+
+let g:bullets_renumber_on_change = 0
+
+let g:bullets_nested_checkboxes = 1
+
+let g:bullets_checkbox_markers = ' .oOX'
+
+let g:bullets_checkbox_partials_toggle = 1
+
+
+" ============================================================
+" 21. Markdown 图片
+" ============================================================
+
+" ------------------------------------------------------------
+" 图片配置
+" ------------------------------------------------------------
+
+" source 根目录的唯一标记文件
+let g:blog_source_marker = 'dkx_img1.txt'
+
+" 图片实际保存目录
+let g:blog_image_dir = 'img'
+
+" 图片文件名前缀
+let g:mdip_imgname = 'image'
+
+
+" ------------------------------------------------------------
+" 查找 Hexo source 根目录
+"
+" 从当前 Markdown 所在目录开始向上寻找：
+"
+"     dkx_img1.txt
+"
+" 找到后，该目录就是 source。
+" ------------------------------------------------------------
+
+function! s:FindSourceRoot(file_dir) abort
+
+    let current = fnamemodify(a:file_dir, ':p')
+
+    while !empty(current)
+
+        let marker = current . '/' . g:blog_source_marker
+
+        if filereadable(marker)
+            return current
+        endif
+
+        let parent = fnamemodify(current, ':h')
+
+        if parent ==# current
+            break
+        endif
+
+        let current = parent
+
+    endwhile
+
+    return ''
+
+endfunction
+
+
+" ------------------------------------------------------------
+" 计算相对路径
+"
+" 例如：
+"
+" source/_posts/test.md
+"     -> ../../img
+"
+" source/_posts/java/test.md
+"     -> ../../../img
+"
+" source/_posts/java/game/test.md
+"     -> ../../../../img
+" ------------------------------------------------------------
+
+function! s:GetRelativePath(from_dir, to_dir) abort
+
+    let from_dir = fnamemodify(a:from_dir, ':p')
+    let to_dir = fnamemodify(a:to_dir, ':p')
+
+    " Windows 路径统一成 /
+    let from_dir = substitute(from_dir, '\\', '/', 'g')
+    let to_dir = substitute(to_dir, '\\', '/', 'g')
+
+    " 去掉末尾 /
+    let from_dir = substitute(from_dir, '/$', '', '')
+    let to_dir = substitute(to_dir, '/$', '', '')
+
+    let from_parts = split(from_dir, '/')
+    let to_parts = split(to_dir, '/')
+
+    let common = 0
+
+    while common < len(from_parts)
+        \ && common < len(to_parts)
+        \ && from_parts[common] ==# to_parts[common]
+
+        let common += 1
+
+    endwhile
+
+    let result = []
+
+    " 从文章目录向上返回
+    let i = common
+
+    while i < len(from_parts)
+        call add(result, '..')
+        let i += 1
+    endwhile
+
+    " 从共同目录进入目标目录
+    let i = common
+
+    while i < len(to_parts)
+        call add(result, to_parts[i])
+        let i += 1
+    endwhile
+
+    return join(result, '/')
+
+endfunction
+
+
+" ------------------------------------------------------------
+" Markdown 图片粘贴
+" ------------------------------------------------------------
+
+function! BlogPasteImage() abort
+
+    " 当前 Markdown 文件
+    let article_file = expand('%:p')
+
+    if empty(article_file)
+
+        echohl ErrorMsg
+        echo '当前文件还没有保存，无法确定图片路径。'
+        echohl None
+
+        return
+
+    endif
+
+
+    " 当前文章目录
+    let article_dir = fnamemodify(article_file, ':h')
+
+
+    " --------------------------------------------------------
+    " 查找 source
+    " --------------------------------------------------------
+
+    let source_root = s:FindSourceRoot(article_dir)
+
+    if empty(source_root)
+
+        echohl ErrorMsg
+        echo '找不到 Hexo source 根目录。'
+        echo '请确认 source 目录中存在：' . g:blog_source_marker
+        echohl None
+
+        return
+
+    endif
+
+
+    " --------------------------------------------------------
+    " 实际图片目录
+    "
+    " Hexo/source/img
+    " --------------------------------------------------------
+
+    let image_dir = source_root . '/' . g:blog_image_dir
+
+    " Windows 统一使用 /
+    let image_dir = substitute(image_dir, '\\', '/', 'g')
+
+
+    " --------------------------------------------------------
+    " 自动创建 source/img
+    " --------------------------------------------------------
+
+    if !isdirectory(image_dir)
+
+        call mkdir(image_dir, 'p')
+
+    endif
+
+
+    " --------------------------------------------------------
+    " 计算 Markdown 中需要使用的相对路径
+    " --------------------------------------------------------
+
+    let relative_dir = s:GetRelativePath(
+        \ article_dir,
+        \ image_dir
+        \ )
+
+
+    " --------------------------------------------------------
+    " 保存插件原配置
+    " --------------------------------------------------------
+
+    let old_imgdir = get(g:, 'mdip_imgdir', 'img')
+
+    let old_imgdir_intext = get(
+        \ g:,
+        \ 'mdip_imgdir_intext',
+        \ old_imgdir
+        \ )
+
+    let had_absolute = exists('g:mdip_imgdir_absolute')
+
+    if had_absolute
+        let old_imgdir_absolute = g:mdip_imgdir_absolute
+    endif
+
+
+    " --------------------------------------------------------
+    " 临时设置 md-img-paste.vim
+    "
+    " 图片实际保存：
+    "
+    "     相对于文章目录的 relative_dir
+    "
+    " Markdown：
+    "
+    "     同样使用 relative_dir
+    " --------------------------------------------------------
+
+    let g:mdip_imgdir = relative_dir
+    let g:mdip_imgdir_intext = relative_dir
+
+
+    " 如果存在 absolute 模式，暂时关闭
+    if exists('g:mdip_imgdir_absolute')
+        unlet g:mdip_imgdir_absolute
+    endif
+
+
+    " --------------------------------------------------------
+    " 调用 md-img-paste.vim
+    " --------------------------------------------------------
+
+    call mdip#MarkdownClipboardImage()
+
+
+    " --------------------------------------------------------
+    " 恢复插件原配置
+    " --------------------------------------------------------
+
+    let g:mdip_imgdir = old_imgdir
+    let g:mdip_imgdir_intext = old_imgdir_intext
+
+    if had_absolute
+        let g:mdip_imgdir_absolute = old_imgdir_absolute
+    endif
+
+endfunction
+
+
+" ------------------------------------------------------------
+" Markdown 图片快捷键
+"
+" Space + i
+" ------------------------------------------------------------
+
+augroup markdown_image
+
+    autocmd!
+
+    autocmd FileType markdown
+        \ nnoremap <buffer><silent> <Leader>i
+        \ :call BlogPasteImage()<CR>
+
+augroup END
+
+
+" ============================================================
+" 22. 其他
+" ============================================================
+
+" 如果以后想使用鼠标：
+"
+" set mouse=a
+
+
+" 不要长期使用 paste 模式。
+"
+" 粘贴大量外部代码：
+"
+" :set paste
+"
+" 粘贴结束：
+"
+" :set nopaste
+
+
+" ============================================================
+" END
+" ============================================================
