@@ -317,6 +317,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'morhetz/gruvbox'
 
+" 需要安装字体https://github.com/ryanoasis/nerd-fonts/releases/latest?utm_source=chatgpt.com下载JetBrainsMono.zip解压，删除其它文件全选.ttf文件安装即可
 Plug 'ryanoasis/vim-devicons'
 
 
