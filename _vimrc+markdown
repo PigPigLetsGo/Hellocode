@@ -302,6 +302,8 @@ Plug 'iamcco/markdown-preview.nvim', {
     \ 'for': ['markdown', 'vim-plug']
     \ }
 
+" 侧边栏
+Plug 'preservim/vim-markdown'
 
 " Table Mode
 Plug 'dhruvasagar/vim-table-mode'
@@ -398,6 +400,17 @@ let g:NERDTreeIgnore = [
     \ '^ntuser\.ini$'
     \ ]
 
+" ============================================================
+" Markdown TOC / Quickfix
+" ============================================================
+
+" 打开 Markdown 文章目录
+nnoremap <Leader>mv :Toc<CR>
+
+augroup my_quickfix
+    autocmd!
+    autocmd FileType qf nnoremap <silent> <buffer> <CR> <CR>
+augroup END
 
 " ============================================================
 " 18. Markdown Table Mode
