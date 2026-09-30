@@ -61,7 +61,23 @@ set noswapfile
 
 set backspace=indent,eol,start
 
+" ==============================
+" 系统剪贴板
+" ==============================
 
+" 不设置 unnamedplus，避免影响 Vim 原生 yy
+" set clipboard=unnamedplus
+
+if has('clipboard')
+    " 可视模式 Ctrl+C：复制到系统剪贴板
+    vnoremap <C-c> "+y
+
+    " 普通模式 Ctrl+V：粘贴系统剪贴板
+    nnoremap <C-v> "+p
+
+    " 插入模式 Ctrl+V：粘贴系统剪贴板
+    inoremap <C-v> <C-r>+
+endif
 " ============================================================
 " 02. 界面
 " ============================================================
@@ -317,7 +333,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'morhetz/gruvbox'
 
-" 需要安装字体https://github.com/ryanoasis/nerd-fonts/releases/latest?utm_source=chatgpt.com下载JetBrainsMono.zip解压，删除其它文件全选.ttf文件安装即可
 Plug 'ryanoasis/vim-devicons'
 
 
