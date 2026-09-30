@@ -1,6 +1,7 @@
 " ============================================================
 " mytools.vim
 " Vim 9.2 Cross-platform Tool Manager
+" 请将此文件存放至C:\Users\18516\vimfiles\autoload目录下 配合_vimrc使用
 "
 " Managed tools:
 "   fzf
