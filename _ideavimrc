@@ -1,5 +1,5 @@
 "=======================================================================
-"         _________ _______ 
+"         _________ _______
 "|\     /|\__   __/(       )
 "| )   ( |   ) (   | () () |
 "| |   | |   | |   | || || |
@@ -7,501 +7,725 @@
 " \ \_/ /    | |   | |   | |
 "  \   /  ___) (___| )   ( |
 "   \_/   \_______/|/     \|
-"                           
-"            ❀
-"------------------------------------------------------
-"※==================================================※
-"------------------------------------------------------
 "
-"--Vim移动键位--
+"            ❀
+"=======================================================================
+
+
+"=======================================================================
+" Vim 移动键位
+"
 "          ^
-"           |
-"           |
-"< - - h j k l - - >
-"              |
-"              |
-"              v
-syntax on
-"让vimrc配置变更立即生效'
+"          |
+"          |
+"       h  j  k  l
+"          |
+"          |
+"          v
+"=======================================================================
+
+
+"-----------------------------------------------------------------------
+" 基础设置
+" 请先搜索插件，安装必要插件比如：AceJump
+"-----------------------------------------------------------------------
+
+" 让 .ideavimrc 保存后自动重新加载
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
-set nocompatible
+
+" 搜索高亮
 set hlsearch
-colorscheme desert
-set backspace=indent,eol,start
-filetype indent on
-filetype plugin on
-filetype plugin indent on
-"set mouse=a
-set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
-set termencoding=utf-8
-set encoding=utf-8
-let &t_ut=''
-let g:EasyMotion_override_acejump = 0
-let g:argtextobj_pairs="[:],(:),<:>"
-set idearefactormode=keep
-set ideavimsupport
-set tabstop=3
-set shiftwidth=3
-set softtabstop=3
-" 展开代码块
-" zR全部展开
-" zM全部折叠
-" za展开/折叠当前代码块
-set foldmethod=indent
-set so=5
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" 删除/退格行为
+" IdeaVim 不支持 Vim 原生 backspace 选项，因此这里不设置
+
+" Leader 键
 let mapleader = " "
-noremap <LEADER><CR> :nohlsearch<CR>
-noremap U 3kzz
-noremap E 3jzz
-"中间行
-nnoremap <esc> :noh<cr>zz
-noremap j gjzz
-noremap k gkzz
-noremap <s-n> <s-n>zz
-noremap * *zz
-noremap # #zz
-noremap <c-o> <c-o>zz
-noremap <c-i> <c-i>zz
-map s <nop>
-map<CR>q :q!<CR>
-map Q :qa!<CR>
-map <S-Enter> o<Esc>
-map <leader>a :action $SelectAll<CR>
-map <leader>x :action $Cut<CR>
-map <leader>c :action $Copy<CR>
-map <leader>z :action $Undo<CR>
-map <leader>v :action $Paste<CR>
-set number
-set relativenumber
-set ideajoin
-set exchange
-set easymotion
-set surround
-set ideamarks
-" 所在行高亮
-set cursorline "行
-" 突出显示当前行
-set scrolloff=3 " 3 lines above/below cursor when scrolling
-" Vim 的默认寄存器和系统剪贴板共享
-set clipboard=ideaput,unnamed
 
-
-"输入问题,如果无效则按如下操作
-"1.设置-->时间和语言-->语言-->添加语言=>搜索:English(美国)添加
-"按win+Leader切换即可
-"2.在idea中安装插件 IdeaVimExtension
-set keep-english-in-normal " 开启输入法自动切换功能
-set keep-english-in-normal-and-restore-in-insert " 回到insert模式时恢复输入法
-
-set wrap
-set showcmd
-set wildmenu
+" 搜索相关
 set incsearch
 set ignorecase
 set smartcase
+
+" 历史记录
 set history=3000000
+
+" 相对行号
+set number
+set relativenumber
+
+" 当前行
+set cursorline
+
+" 光标滚动时上下保留空间
+set scrolloff=3
+
+" 自动换行
+set wrap
+
+" 显示当前操作
+set showcmd
+
+" 显示模式
+set showmode
+
+" 匹配括号
+" set showmatch
+
+
+"-----------------------------------------------------------------------
+" IdeaVim 功能
+"-----------------------------------------------------------------------
+
+set ideajoin
+set exchange
+set surround
+set ideamarks
 set commentary
 set multiple-cursors
-:set vb
-set showmatch
-set showmode
-set NERDTree
-set highlightedyank
-set paste
-"总是显示状态栏'
-set laststatus=2
-"显示光标当前位置'
-set ruler
-set listchars=tab:>-,trail:-
 
-hi CursorLine term=bold cterm=bold ctermbg=237
+" IdeaVim 重构模式
+set idearefactormode=keep
 
-"EsayMotion需要idea,install此插件
+" IdeaVim 支持模式
+" set ideavimsupport
+set ideavimsupport=dialog
 
-Plug 'easymotion/vim-easymotion'
+" IdeaVim 剪贴板
+set clipboard=ideaput,unnamed
 
-"EasyMotion
-"表示光标所在位置
-<cursor>Lorem ipsum dolor sit amet.
+" 参数文本对象
+let g:argtextobj_pairs="[:],(:),<:>"
 
-"按下<Leader><Leader>w来触发单词移动动作 w，当这个移动动作被触发时，文本将会更新
-<cursor>Lorem {a}psum {b}olor {c}it {d}met.
 
-"按下 c 会跳到单词 “sit” 的开头位置
-Lorem ipsum dolor <cursor>sit amet.
+"-----------------------------------------------------------------------
+" Tab / 缩进
+"-----------------------------------------------------------------------
 
-"同样，如果你想要寻找 o ，你可以使用 f 移动动作。按下<Leader><Leader>fo，所有的 o 字符都将高亮显示
-<cursor>L{a}rem ipsum d{b}l{c}r sit amet.
+" 注意：
+" tabstop / shiftwidth / softtabstop 属于 Vim 原生选项，
+" 当前 IdeaVim 环境不支持，因此删除。
 
-"按下 b 会跳到第二个 o
-Lorem ipsum d<cursor>olor sit amet.
 
-"打开命令管理器
+"-----------------------------------------------------------------------
+" 输入法
+"-----------------------------------------------------------------------
+
+" 回到 Normal 模式自动切换英文
+set keep-english-in-normal
+
+" 回到 Insert 模式时恢复之前输入法
+set keep-english-in-normal-and-restore-in-insert
+
+
+"=======================================================================
+" 基础移动 / 搜索
+"=======================================================================
+
+" Leader + Enter：取消搜索高亮
+noremap <LEADER><CR> :nohlsearch<CR>
+
+" U / E：上下移动 3 行
+noremap U 3kzz
+noremap E 3jzz
+
+" ESC：取消搜索并居中
+nnoremap <Esc> :noh<CR>zz
+
+" j / k：按屏幕行移动并居中
+noremap j gjzz
+noremap k gkzz
+
+" N：下一个搜索结果并居中
+noremap <S-n> <S-n>zz
+
+" * / #：搜索当前单词并居中
+noremap * *zz
+noremap # #zz
+
+" Ctrl-O / Ctrl-I：跳转历史位置并居中
+noremap <C-o> <C-o>zz
+noremap <C-i> <C-i>zz
+
+
+"-----------------------------------------------------------------------
+" 禁用 s
+"-----------------------------------------------------------------------
+
+map s <Nop>
+
+
+"-----------------------------------------------------------------------
+" 退出
+"-----------------------------------------------------------------------
+
+map <CR>q :q!<CR>
+map Q :qa!<CR>
+
+
+"-----------------------------------------------------------------------
+" Shift + Enter
+"-----------------------------------------------------------------------
+
+map <S-Enter> o<Esc>
+
+
+"=======================================================================
+" IDEA 基础操作
+"=======================================================================
+
+" 全选
+map <leader>a :action $SelectAll<CR>
+
+" 剪切
+map <leader>x :action $Cut<CR>
+
+" 复制
+map <leader>c :action $Copy<CR>
+
+" 撤销
+map <leader>z :action $Undo<CR>
+
+" 粘贴
+map <leader>v :action $Paste<CR>
+
+
+"=======================================================================
+" 输入模式移动
+"=======================================================================
+
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
+
+"=======================================================================
+" 代码折叠
+"=======================================================================
+
+" IdeaVim 当前配置不使用 Vim 原生 foldmethod。
+"
+" 常用 Vim 折叠快捷键：
+"
+" zR  全部展开
+" zM  全部折叠
+" za  当前折叠展开/折叠
+"
+" 具体代码折叠由 IntelliJ IDEA 自己管理。
+
+"=======================================================================
+" AceJump
+"=======================================================================
+
+" Space t j
+" AceJump：单词跳转
+noremap <Space>tj mm`m:action AceWordAction<CR>
+
+" Space j p
+" AceJump：跳转到声明
+noremap <Space>jp mm`m:action AceDeclarationAction<CR>
+
+"=======================================================================
+" IDEA 工具窗口 / 命令
+"=======================================================================
+
+" 打开 Terminal
 nnoremap <Leader>sh Vy<CR>:action ActivateTerminalToolWindow<CR>
 
-"生成get set方法
+" Generate
 nnoremap <Leader>GS :action Generate<CR>
 
-"g4文件生成代码(需要安装anltr4插件)
+" ANTLR 生成代码
 noremap <Space>ags :action antlr.Generate<CR>:action antlr.Generate<CR>
 
-" 重写方法
+" Override Methods
 nnoremap <Space>cx :action OverrideMethods<CR>
 
-"打断点
+" 添加/取消断点
 nnoremap <Space>bb :action ToggleLineBreakpoint<CR>
 
-"标记
-nnoremap <C-b> :action ToggleBookmark<cr>
+" Bookmark
+nnoremap <C-b> :action ToggleBookmark<CR>
 
-"git工具
-nnoremap <C-t> :action Annotate<cr>
+" Git Annotate
+nnoremap <C-t> :action Annotate<CR>
 
-"去除所有断点在当前文件中
+" 删除当前文件所有断点
 noremap <Space>rb :action Debugger.RemoveAllBreakpointsInFile<CR>
 
-"去除所有断点
+" 删除所有断点
 noremap <Space>rab :action Debugger.RemoveAllBreakpoints<CR>
 
-"显示当前断点位置
+" 显示当前执行位置
 noremap <Space>pp :action ShowExecutionPoint<CR>
 
-"流追踪技术
+" Stream Tracer
 noremap <Space>ds :action StreamTracerAction<CR>
 
-"哑断点技术
+" Mute Breakpoints
 noremap <Space>mb :action XDebugger.MuteBreakpoints<CR>
 
-"条件断点编辑
+" 编辑断点
 noremap <Space>eb :action EditBreakpoint<CR>
 
-"查找用法
+" 查找用法
 nnoremap <Leader>fu :action FindUsages<CR>
 
-"Codota查找类似代码，需要提前安装Codota插件
+" Codota
 noremap <Space>oc :action OpenCodotaSearch<CR>
 
-"快速翻译(需要安装翻译插件:Translation)
-noremap <Space>qq   :action $TranslateTextComponent<CR>
+" 翻译
+noremap <Space>qq :action $TranslateTextComponent<CR>
 
-"复制相对路径文件名
-noremap <Space>ccp   :action CopyContentRootPath<CR>
+" 复制相对路径
+noremap <Space>ccp :action CopyContentRootPath<CR>
 
-"复制当前文件的绝对路径
-noremap <Space>cpa   :action CopyAbsolutePath<CR>
+" 复制绝对路径
+noremap <Space>cpa :action CopyAbsolutePath<CR>
 
-"保存模板
+" 保存为模板
 noremap <Space>stc :action SaveAsTemplate<CR>
 
-"代码环绕(if,try|catch之类的)
+" Surround With
 noremap <Space>sw :action SurroundWith<CR>
 
-"新建类,比nE快
+" 新建 Class
 noremap <Space>nc :action NewClass<CR>
 
-"新建项目
+" 新建 Project
 noremap <Space>np :action NewProject<CR>
 
-"优化导入
+" 优化 Import
 noremap <Space>oi :action OptimizeImports<CR>
 
-"idea智能提示(CR:回车 执行操作为:两次回车)
+" IDEA 意图操作
 nnoremap <CR><CR> :action ShowIntentionActions<CR>
 
-"弹出警告信息
+" 显示错误描述
 noremap <Space>ed :action ShowErrorDescription<CR>
 
-"弹出类型信息
+" 显示表达式类型
 noremap <Space>ti :action ExpressionTypeInfo<CR>
 
-"弹出参数信息
+" 参数信息
 noremap <Space>pi :action ParameterInfo<CR>
 
-"快速显示当前方法信息
+" JavaDoc
 noremap <Space>jd :action QuickJavaDoc<CR>
 
-"弹出文件结构信息
+" 文件结构
 noremap <Space>fs mm`m:action FileStructurePopup<CR>
 
-"显示maven的依赖层级信息
-noremap <Space>sd  :action ShowUmlDiagram<CR>
+" UML
+noremap <Space>sd :action ShowUmlDiagram<CR>
 
-"关闭到只剩当前tab栏
+
+"=======================================================================
+" 编辑器窗口
+"=======================================================================
+
+" 关闭除当前 Editor 外的其他 Editor
 noremap <C-g> :action CloseAllEditorsButActive<CR>
 
-"删除未修改的tab
+" 关闭未修改的 Editor
 noremap <Space>cu :action CloseAllUnmodifiedEditors<CR>
 
-" 前进，相当似于eclipse中的alt+方向右键
+" 前进
 noremap <Space>j :action Forward<CR>
 
-" 后退，相当于eclipse中的alt+方向左键
+" 后退
 noremap <Space>k :action Back<CR>
 
-"窗口最大化windows max
+" 最大化工具窗口
 nnoremap <Space>mm :action MaximizeToolWindow<CR>
 
-"隐藏所有窗口
+" 隐藏所有窗口
 noremap <C-c> :action HideAllWindows<CR>
 
-"隐藏窗口(windows hide)
+" 隐藏当前窗口
 nnoremap <Space>wh :action HideActiveWindow<CR>
 
-"激活debug的运行窗口
+" Debug 窗口
 nnoremap <Space>wd :action ActivateDebugToolWindow<CR>
 
-"激活run的运行窗口
+" Run 窗口
 nnoremap <Space>wr :action ActivateRunToolWindow<CR>
 
-"激活窗口,选中当前位置
+" Project View
 noremap <C-s> :action SelectInProjectView<CR>
 
-"激活maven窗口
-noremap <Space>am  :action ActivateMavenToolWindow<CR>
 
-"激活database窗口
-noremap <Space>ad  :action ActivateDatabaseToolWindow<CR>
+"=======================================================================
+" IDEA Tool Window
+"=======================================================================
 
-"激活todo的窗口
-noremap <Space>at   :action ActivateTODOToolWindow<CR>
+" Maven
+noremap <Space>am :action ActivateMavenToolWindow<CR>
 
-"激活Favorites的窗口
+" Database
+noremap <Space>ad :action ActivateDatabaseToolWindow<CR>
+
+" TODO
+noremap <Space>at :action ActivateTODOToolWindow<CR>
+
+" Favorites
 noremap <Space>af :action ActivateFavoritesToolWindow<CR>
 
-"激活project的窗口
+" Project
 noremap <C-a> :action ActivateProjectToolWindow<CR>
 
-"激活version control的窗口
+" Version Control
 noremap <Space>ag :action ActivateVersionControlToolWindow<CR>
 
-"激活services的窗口
+" Services
 noremap <Space>as :action ActivateServicesToolWindow<CR>
 
-"激活Breakpoints的窗口.
+" Breakpoints
 noremap <Space>ab :action ViewBreakpoints<CR>
 
-"Codota激活窗口，需要提前安装Codota插件
+" Codota
 noremap <Space>ac :action ActivateCodotaToolWindow<CR>
 
-"激活Rest的窗口(需要安装插件)
+" REST
 noremap <Space>ar :action ActivateRestServicesToolWindow<CR>
 
-"跳转下个报错处
+
+"=======================================================================
+" 错误 / 修改位置跳转
+"=======================================================================
+
+" 下一个报错
 noremap <Space>ne mm`m:action GotoNextError<CR>
 
-"跳转上个报错处
+" 上一个报错
 noremap <Space>pe mm`m:action GotoPreviousError<CR>
 
-"跳转到下个改动处
+" 上一个修改位置
 noremap <Space>g, mm`m:action JumpToLastChange<CR>
 
-"跳转到上个改动处
+" 下一个修改位置
 noremap <Space>g; mm`m:action JumpToNextChange<CR>
 
-"最近查看文件间相互跳转
+
+"=======================================================================
+" 文件跳转
+"=======================================================================
+
+" 最近查看文件
 noremap <C-w> :action RecentFiles<CR>
 
-"最近改动文件间相互跳转
+" 最近修改文件
 noremap <Space>qu mm`m:action RecentChangedFiles<CR>
 
-"项目之间的跳转(上一个)
+" 下一个 Project
 noremap <Space>nw :action NextProjectWindow<CR>
 
-"项目之间的跳转(下一个)
+" 上一个 Project
 noremap <Space>pw :action PreviousProjectWindow<CR>
 
-"特殊变量跳转
+" Symbol
 nnoremap <Space>ts mm`m:action GotoSymbol<CR>
 
-"跳转到Action
+
+"=======================================================================
+" Goto
+"=======================================================================
+
+" Action
 nnoremap <Leader>ga :action GotoAction<CR>
 
-"跳转到实体类
+" Class
 nnoremap <Leader>gc :action GotoClass<CR>
 
-"跳转到声明
+" Declaration
 nnoremap <Leader>gd :action GotoDeclaration<CR>
 
-"跳转到文件
+" File
 nnoremap <Leader>gf :action GotoFile<CR>
 
-"跳转到实现类
+" Implementation
 nnoremap <Leader>gi :action GotoImplementation<CR>
 
-"从子类方法跳到父类的方法
+" Super Method
 noremap <Space>gs mm`m:action GotoSuperMethod<CR>
 
-"跳转到测试类(没有则自动建立)
+" Test
 nnoremap <Leader>gt :action GotoTest<CR>
 
-"显示当前文件路径
+" 文件路径
 nnoremap <Leader>fp :action ShowFilePath<CR>
 
-"鼠标右键
+" Popup Menu
 nnoremap <Leader>fd :action ShowPopupMenu<CR>
 
-"显示字节码
-noremap <Space>bc   :action ByteCodeViewer<CR>
+" Bytecode
+noremap <Space>bc :action ByteCodeViewer<CR>
 
-"注释
+
+"=======================================================================
+" 代码操作
+"=======================================================================
+
+" 注释
 nnoremap zc :action CommentByLineComment<CR>
 
-"改变视图
+" Change View
 nnoremap <Leader>cv :action ChangeView<CR>
 
-"代码检查
+" Inspect Code
 nnoremap <Leader>icc :action InspectCode<CR>
 
-"正常启动工程
+" 运行配置
 nnoremap <Leader>rc :action ChooseRunConfiguration<CR>
 
-" 选择调试配置
+" Debug 配置
 nnoremap <Leader>cd :action ChooseDebugConfiguration<CR>
 
-"运行当前(now)类
+" 运行当前 Class
 noremap <Leader>rn :action RunClass<CR>
 
-" 重命令元素
+" 重命名元素
 nnoremap <Leader>re :action RenameElement<CR>
 
 " 重命名文件
 nnoremap <Leader>rf :action RenameFile<CR>
 
-" 重运行
+" 重新运行
 nnoremap <Leader>rr :action Rerun<CR>
 
-"debug上次运行的类
+" Debug
 noremap <Space>dd :action Debug<CR>
 
-"debug当前(now)类
+" Debug 当前 Class
 noremap <Space>dn :action DebugClass<CR>
 
-"项目停止运行
-noremap <Space>st  :action Stop<CR>
-"打开项目
+" 停止运行
+noremap <Space>st :action Stop<CR>
+
+" 打开文件
 noremap <Space>op :action OpenFile<CR>
-"关闭项目
+
+" 关闭项目
 noremap <Space>dp :action CloseProject<CR>
 
-"整理代码
+" 格式化代码
 noremap <Space>= :action ReformatCode<CR>
 
-"debug神器
-"过步,一行一行的往下走,不会进入方法,遇到子函数不会进入函数内执行子函数而是将子函数整个执行完毕再停止,也就是把子函数整个作为一步
+
+"=======================================================================
+" Debug 快捷键
+"=======================================================================
+
+" Step Over
+"
+" 一行一行执行
+" 不进入方法内部
 nmap <C-j> :action StepOver<CR>
-"断点执行，只有一个断点点击后执行全部代码
+
+" Resume
+"
+" 继续运行到下一个断点
 nmap <C-k> :action Resume<CR>
-"单步执行到子函数内时,用stepout就可以执行完子函数余下部分，并返回到上一层函数
+
+" Step Out
+"
+" 执行完当前方法剩余代码并返回上一层
 nmap <C-n> :action StepOut<CR>
-"进入任何子函数或者方法
+
+" Force Step Into
+"
+" 强制进入方法
 nmap <C-l> :action ForceStepInto<CR>
-"进入子函数或者方法如果多个分支可进行选择进入
+
+" Step Into
+"
+" 进入方法
 nmap <C-m> :action StepInto<CR>
-"debug强制运行到光标处
+
+" Force Run To Cursor
 noremap <Space>fc :action ForceRunToCursor<CR>
-"debug计算器
-noremap <Space>ee :action EvaluateExpression <CR>
-"debug强制返回
+
+" Evaluate Expression
+noremap <Space>ee :action EvaluateExpression<CR>
+
+" Force Early Return
 noremap <Space>fr :action Debugger.ForceEarlyReturn<CR>
-"添加新的debug观察
+
+" Add To Watch
 noremap <Space>daw :action Debugger.AddToWatch<CR>
-"添加到收藏文件
+
+
+"=======================================================================
+" 其他 IDEA 操作
+"=======================================================================
+
+" Add To Favorites
 noremap <Space>atf :action AddToFavorites<CR>
-"露出文件夹
+
+" Reveal In
 noremap <Space>ri :action RevealIn<CR>
-"打开ddl语句
+
+" 打开 DDL
 noremap <Space>dl :action DatabaseView.OpenDdlInConsole<CR>
-"大小写，驼峰，下划线，中划线转换(安装插件:CamelCase)
+
+" CamelCase
 noremap <Space>uu :action de.netnexus.CamelCasePlugin.ToggleCamelCase<CR>
 
-"移动重构
+
+"=======================================================================
+" 重构
+"=======================================================================
+
+" Move
 noremap <Space>mv :action Move<CR>
-"成员变量转换为静态变量重构(配合移动重构有奇效)
+
+" Make Static
 noremap <Space>ms :action MakeStatic<CR>
-"静态变量转换为成员变量重构
+
+" Convert To Instance Method
 noremap <Space>ci :action ConvertToInstanceMethod<CR>
 
-"内联重构(合并无效变量无效方法)
+" Inline
 noremap <Space>il :action Inline<CR>
-"抽取方法重构
+
+" Extract Method
 noremap <Space>em :action ExtractMethod<CR>
-"抽取接口重构
+
+" Extract Interface
 noremap <Space>ei :action ExtractInterface<CR>
-"修改方法签名
-noremap <Space>cs  :action ChangeSignature<CR>
-"抽取类
+
+" Change Signature
+noremap <Space>cs :action ChangeSignature<CR>
+
+" Extract Class
 noremap <Space>ec :action ExtractClass<CR>
-"匿名类到内部类
+
+" Anonymous To Inner
 noremap <Space>ai :action AnonymousToInner<CR>
 
-"字段的访问限制
+" Encapsulate Fields
 noremap <Space>ef :action EncapsulateFields<CR>
-"切换方法为方法对象
+
+" Replace Method With Method Object
 noremap <Space>rmo :action ReplaceMethodWithMethodObject<CR>
-"引入临时变量
+
+" Introduce Variable
 noremap <Space>iv :action IntroduceVariable<CR>
-"引入常量
+
+" Introduce Constant
 noremap <Space>ic :action IntroduceConstant<CR>
-"引入方法参数
+
+" Introduce Parameter
 noremap <Space>ip :action IntroduceParameter<CR>
-"引入字段
+
+" Introduce Field
 noremap <Space>fi :action IntroduceField<CR>
-"引入参数对象(指定参数)
+
+" Introduce Parameter Object
 noremap <Space>po :action IntroduceParameterObject<CR>
-"CSDN万能工具，需要提前安装CSDN插件
+
+" CSDN
 noremap <Space>csdn :action SearchByCSDN<CR>
 
-"方法下放到子类
+" Push Down
 noremap <Space>pd :action MemberPushDown<CR>
-"方法上移到父类
+
+" Pull Up
 noremap <Space>pu :action MembersPullUp<CR>
 
-"插 入 模 式 下 移 动 光 标 快 捷 键                                                                                                                        
-inoremap <C-h> <Left>                                                                                                                             
-inoremap <C-j> <Down>                                                                                                                              
-inoremap <C-k> <Up>                                                                                                                               
-inoremap <C-l> <Right> 
 
-"上下左右键控制当前分窗大小,ideavim应该不持支
-"map <up> :res +5<CR>
-"map <down> :res -5<CR>
-"map <left> :vertical resize -5<CR>
-"map <right> :vertical resize +5<CR>
+"=======================================================================
+" AceJump
+"=======================================================================
 
-"跳转 需要安装AceJump插件
+" AceWordAction
 noremap <Space>tj mm`m:action AceWordAction<CR>
+
+" AceDeclarationAction
 noremap <Space>jp mm`m:action AceDeclarationAction<CR>
 
-" (切换标签)
+
+"=======================================================================
+" Tab / Editor
+"=======================================================================
+
+" 下一个 Tab
 nnoremap <C-e> gt
+
+" 上一个 Tab
 nnoremap <C-q> gT
 
-" (上下翻页)
-nnoremap <Leader>d  <C-d>
-nnoremap <Leader>u  <C-u>
+
+"=======================================================================
+" 翻页
+"=======================================================================
+
+" 向下半页
+nnoremap <Leader>d <C-d>
+
+" 向上半页
+nnoremap <Leader>u <C-u>
+
+
+"=======================================================================
+" Select In
+"=======================================================================
+
 nnoremap m :action SelectIn
+
+
+"=======================================================================
+" Window
+"=======================================================================
+
+" 关闭当前窗口
 nnoremap <Leader>q <C-W>c
+
+" 垂直分屏
 nnoremap sv <C-W>v
+
+" 水平分屏
 nnoremap ss <C-W>s
+
+
+"=======================================================================
+" Enter
+"=======================================================================
+
+" Normal 模式按 Enter：
+" 进入插入模式并换行，然后返回 Normal 模式
 nnoremap <CR> a<CR><Esc>k$
-"inoremap ( ()<Esc>i
-"inoremap [ []<Esc>i
-"inoremap < <><Esc>i
-"inoremap { {}<Esc>i
-"inoremap ' ''<Esc>i
-" idea中回车后面不要加}因为idea自动补全加上就会多除一个}
+
+
+"=======================================================================
+" Insert 模式自动大括号
+"=======================================================================
+
+" IDEA 会自动补全右大括号，所以这里只处理左大括号 + 换行
 inoremap {{ {<CR><Esc>O
 
-"---------------------------SQL篇------------------------------
-"sql提交
+
+"=======================================================================
+" SQL
+"=======================================================================
+
+" SQL 提交
 noremap <Space>sc :action Console.Transaction.Commit<CR>
-"sql回滚
+
+" SQL 回滚
 noremap <Space>sr :action Console.Transaction.Rollback<CR>
-"sql执行
+
+" SQL 执行
 noremap <Space>s :action Console.Jdbc.Execute<CR>
-"sql执行计划
+
+" SQL 执行计划
 noremap <Space>ep :action Console.Jdbc.ExplainPlan<CR>
-"sql-raw执行计划
+
+" SQL Raw 执行计划
 noremap <Space>EP :action Console.Jdbc.ExplainPlan.Raw<CR>
+
+
+"=======================================================================
+" End
 "=======================================================================
