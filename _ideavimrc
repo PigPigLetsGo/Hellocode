@@ -325,10 +325,10 @@ noremap <C-g> :action CloseAllEditorsButActive<CR>
 noremap <Space>cu :action CloseAllUnmodifiedEditors<CR>
 
 " 前进
-noremap <Space>w :action Forward<CR>
+noremap <C-z> :action Forward<CR>
 
 " 后退
-noremap <Space>e :action Back<CR>
+noremap <C-x> :action Back<CR>
 
 " 最大化工具窗口
 nnoremap <Space>mm :action MaximizeToolWindow<CR>
