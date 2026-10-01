@@ -27,7 +27,7 @@
 
 "-----------------------------------------------------------------------
 " 基础设置
-" 请先搜索插件，安装必要插件比如：AceJump, IdeaVim-EasyMotion
+" 请先搜索插件，安装必要插件比如：AceJump, EasyMotion
 "-----------------------------------------------------------------------
 
 " 让 .ideavimrc 保存后自动重新加载
@@ -146,7 +146,6 @@ noremap # #zz
 " Ctrl-O / Ctrl-I：跳转历史位置并居中
 noremap <C-o> <C-o>zz
 noremap <C-i> <C-i>zz
-
 
 "-----------------------------------------------------------------------
 " 禁用 s
@@ -332,10 +331,10 @@ noremap <C-g> :action CloseAllEditorsButActive<CR>
 noremap <Space>cu :action CloseAllUnmodifiedEditors<CR>
 
 " 前进
-noremap <Space>j :action Forward<CR>
+noremap <Space>w :action Forward<CR>
 
 " 后退
-noremap <Space>k :action Back<CR>
+noremap <Space>e :action Back<CR>
 
 " 最大化工具窗口
 nnoremap <Space>mm :action MaximizeToolWindow<CR>
