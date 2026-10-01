@@ -27,7 +27,7 @@
 
 "-----------------------------------------------------------------------
 " 基础设置
-" 请先搜索插件，安装必要插件比如：AceJump
+" 请先搜索插件，安装必要插件比如：AceJump, IdeaVim-EasyMotion
 "-----------------------------------------------------------------------
 
 " 让 .ideavimrc 保存后自动重新加载
@@ -634,6 +634,23 @@ noremap <Space>pd :action MemberPushDown<CR>
 " Pull Up
 noremap <Space>pu :action MembersPullUp<CR>
 
+" EasyMotion
+set easymotion
+
+" Space + h：向左快速跳转
+map <Leader>h <Plug>(easymotion-linebackward)
+
+" Space + j：向下快速跳转
+map <Leader>j <Plug>(easymotion-j)
+
+" Space + k：向上快速跳转
+map <Leader>k <Plug>(easymotion-k)
+
+" Space + l：向右快速跳转
+map <Leader>l <Plug>(easymotion-lineforward)
+
+let g:EasyMotion_startofline = 0
+let g:EasyMotion_smartcase = 1
 
 "=======================================================================
 " AceJump
