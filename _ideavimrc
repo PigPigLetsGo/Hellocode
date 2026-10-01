@@ -27,7 +27,6 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 set nocompatible
 set hlsearch
 colorscheme desert
-set nocompatible
 set backspace=indent,eol,start
 filetype indent on
 filetype plugin on
@@ -44,10 +43,13 @@ set ideavimsupport
 set tabstop=3
 set shiftwidth=3
 set softtabstop=3
+" 展开代码块
+" zR全部展开
+" zM全部折叠
+" za展开/折叠当前代码块
 set foldmethod=indent
 set so=5
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-syntax on
 let mapleader = " "
 noremap <LEADER><CR> :nohlsearch<CR>
 noremap U 3kzz
@@ -65,7 +67,6 @@ map s <nop>
 map<CR>q :q!<CR>
 map Q :qa!<CR>
 map <S-Enter> o<Esc>
-map <C-o> O<Esc>
 map <leader>a :action $SelectAll<CR>
 map <leader>x :action $Cut<CR>
 map <leader>c :action $Copy<CR>
@@ -78,14 +79,12 @@ set exchange
 set easymotion
 set surround
 set ideamarks
-set clipboard+=ideaput
-set keep-english-in-normal-and-restore-in-insert
 " 所在行高亮
 set cursorline "行
 " 突出显示当前行
 set scrolloff=3 " 3 lines above/below cursor when scrolling
 " Vim 的默认寄存器和系统剪贴板共享
-set clipboard+=unnamed
+set clipboard=ideaput,unnamed
 
 
 "输入问题,如果无效则按如下操作
@@ -98,16 +97,13 @@ set keep-english-in-normal-and-restore-in-insert " 回到insert模式时恢复�
 set wrap
 set showcmd
 set wildmenu
-set hlsearch
 set incsearch
 set ignorecase
-set scrolloff=5
 set smartcase
 set history=3000000
 set commentary
 set multiple-cursors
 :set vb
-:set keep-english-in-normal
 set showmatch
 set showmode
 set NERDTree
@@ -119,18 +115,7 @@ set laststatus=2
 set ruler
 set listchars=tab:>-,trail:-
 
-set cursorline
 hi CursorLine term=bold cterm=bold ctermbg=237
-
-"中间行
-nnoremap <esc> :noh<cr>zz
-noremap j gjzz
-noremap k gkzz
-noremap <s-n> <s-n>zz
-noremap * *zz
-noremap # #zz
-noremap <c-o> <c-o>zz
-noremap <c-i> <c-i>zz
 
 "EsayMotion需要idea,install此插件
 
@@ -207,7 +192,7 @@ noremap <Space>ccp   :action CopyContentRootPath<CR>
 noremap <Space>cpa   :action CopyAbsolutePath<CR>
 
 "保存模板
-noremap <Space>st :action SaveAsTemplate<CR>
+noremap <Space>stc :action SaveAsTemplate<CR>
 
 "代码环绕(if,try|catch之类的)
 noremap <Space>sw :action SurroundWith<CR>
@@ -360,13 +345,13 @@ nnoremap <Leader>fd :action ShowPopupMenu<CR>
 noremap <Space>bc   :action ByteCodeViewer<CR>
 
 "注释
-nnoremap zz :action CommentByLineComment<CR>
+nnoremap zc :action CommentByLineComment<CR>
 
 "改变视图
 nnoremap <Leader>cv :action ChangeView<CR>
 
 "代码检查
-nnoremap <Leader>ic :action InspectCode<CR>
+nnoremap <Leader>icc :action InspectCode<CR>
 
 "正常启动工程
 nnoremap <Leader>rc :action ChooseRunConfiguration<CR>
@@ -402,14 +387,6 @@ noremap <Space>dp :action CloseProject<CR>
 "整理代码
 noremap <Space>= :action ReformatCode<CR>
 
-"--在普通和插入模式下，向下交换行/向上交换行
-nnoremap <C-j> :m +1<CR>
-nnoremap <C-k> :m -2<CR>
-inoremap <C-j> <Esc> :m +1<CR>gi
-inoremap <C-k> <Esc> :m -2<CR>gi
-xnoremap <C-j> :m '>+1<cr>gv=gv
-xnoremap <C-k> :m '<-2<cr>gv=gv
-
 "debug神器
 "过步,一行一行的往下走,不会进入方法,遇到子函数不会进入函数内执行子函数而是将子函数整个执行完毕再停止,也就是把子函数整个作为一步
 nmap <C-j> :action StepOver<CR>
@@ -437,8 +414,6 @@ noremap <Space>ri :action RevealIn<CR>
 noremap <Space>dl :action DatabaseView.OpenDdlInConsole<CR>
 "大小写，驼峰，下划线，中划线转换(安装插件:CamelCase)
 noremap <Space>uu :action de.netnexus.CamelCasePlugin.ToggleCamelCase<CR>
-"大小写切换，必须要先安装插件(安装插件:CamelCase)
-noremap <Space>ur :action de.netnexus.CamelCasePlugin.ToggleCamelCase<CR>
 
 "移动重构
 noremap <Space>mv :action Move<CR>
