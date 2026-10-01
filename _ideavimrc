@@ -271,12 +271,6 @@ noremap <Space>eb :action EditBreakpoint<CR>
 " 查找用法
 nnoremap <Leader>fu :action FindUsages<CR>
 
-" Codota
-noremap <Space>oc :action OpenCodotaSearch<CR>
-
-" 翻译
-noremap <Space>qq :action $TranslateTextComponent<CR>
-
 " 复制相对路径
 noremap <Space>ccp :action CopyContentRootPath<CR>
 
