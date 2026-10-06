@@ -16,6 +16,8 @@
 
 set nocompatible
 
+set guifont=JetBrainsMono_NFM:h12:cANSI:qDRAFT
+
 " ----------------------------
 " 编码
 " ----------------------------
