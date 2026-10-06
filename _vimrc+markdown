@@ -23,6 +23,7 @@ set guifont=JetBrainsMono_NFM:h12:cANSI:qDRAFT
 " ----------------------------
 
 set encoding=utf-8
+" https://github.com/ryanoasis/nerd-fonts/releases 下载字体 JetBrainsMono
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 
 
